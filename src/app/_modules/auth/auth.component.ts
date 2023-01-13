@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../_services/api.service';
 
 @Component({
   selector: 'auth',
@@ -8,25 +7,10 @@ import { ApiService } from '../../_services/api.service';
 })
 
 export class AuthComponent implements OnInit {
-  email: string = "";
-  password: string = "";
+  constructor() { }
 
-  constructor(
-    private api : ApiService
-  ) { }
-
+  url = window.location.href.split("/").slice(-1)[0];
+  
   ngOnInit(): void {
-
-  }
-
-  login() {
-    let json = {
-      "email": this.email,
-      "password": this.password
-    };
-
-    this.api.loginPipe(json).subscribe((resp:any) => {
-      console.log(resp);
-    });
   }
 }

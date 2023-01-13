@@ -1,5 +1,2 @@
-<form (ngSubmit)="login()">
-    <input type="text" placeholder="Email" [(ngModel)]="email" name="email">
-    <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
-    <button type="submit">Login</button>
-</form>
+<login *ngIf="url == 'login'"></login>
+<signup *ngIf="url == 'signup'"></signup>

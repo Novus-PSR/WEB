@@ -4,11 +4,14 @@ import { AuthComponent } from './_modules/auth/auth.component';
 
 const routes: Routes = [
   {
-    path: '', redirectTo: 'auth', pathMatch: 'full'
+    path: '', redirectTo: 'login', pathMatch: 'full'
     
   },
   {
-    path: 'auth', component: AuthComponent
+    path: 'login', component: AuthComponent
+  },
+  {
+    path: 'signup', component: AuthComponent
   }
 ];
 
