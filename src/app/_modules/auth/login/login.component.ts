@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/_services/api.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
   password : string = "";
   
   constructor(
-    private api : ApiService
+    private api : ApiService,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -28,6 +30,10 @@ export class LoginComponent implements OnInit {
     this.api.loginPipe(json).subscribe((resp:any) => {
       console.log(resp);
     });
+  }
+
+  goToSignUp() {
+    this.router.navigateByUrl('/signup');
   }
 
 }

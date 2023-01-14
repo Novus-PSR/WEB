@@ -1,1 +1,20 @@
-<p>signup works!</p>
+<div class="container">
+    <div class="card">
+        <h1 class="h1">Regístrate</h1>
+        <small class="hint">¡Bienvenido!</small>
+        <small class="hint"> Ingresa los datos para continuar.</small>
+        <form (ngSubmit)="signup()">
+            <input type="text" placeholder="Nombre" [(ngModel)]="first_name" name="first_name">
+            <input type="text" placeholder="Apellido" [(ngModel)]="last_name" name="last_name">
+            <input type="text" placeholder="Username" [(ngModel)]="username" name="username">
+            <input type="text" placeholder="Email" [(ngModel)]="email" name="email">
+            <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
+            <input type="password" placeholder="Confirmación de password" [(ngModel)]="password_confirmation" name="password_confirmation">
+            <button type="submit" class="btn-primary">Crear cuenta</button>
+        </form>
+        <div class="card-footer">
+            <p class="p"> Ya tienes cuenta?</p>
+            <button class="btn-secondary" (click)="goToLogin()"> Iniciar sesión </button>
+        </div>
+    </div>
+</div>
