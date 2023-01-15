@@ -9,6 +9,9 @@ button {
 }
 
 .btn-primary {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     background: rgba(183, 110, 218, 1);
     border: none;
     border-radius: 30px;
@@ -21,6 +24,9 @@ button {
 }
 
 .btn-secondary {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
     width: 30%;
     height: 40px;
     background: #EBEBEB;
