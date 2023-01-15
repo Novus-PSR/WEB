@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="card">
+        <h1 class="h1">Inicia sesión</h1>
+        <small class="hint">¡Bienvenido!</small>
+        <small class="hint"> Ingresa los datos para continuar.</small>
+        <form (ngSubmit)="login()">
+            <input type="text" placeholder="Email" [(ngModel)]="email" name="email">
+            <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
+            <a href="#" class="hint">¿Olvidaste tu contraseña?</a>
+            <button type="submit" class="btn-primary">Ingresar</button>
+        </form>
+        <div class="card-footer">
+            <p class="p"> ¿Aún no tienes cuenta?</p>
+            <!-- <a href="signup"><button class="btn-secondary"> Regístrate </button></a> -->
+            <button class="btn-secondary" (click)="goToSignUp()"> Regístrate </button>
+        </div>
+    </div>
+</div>
