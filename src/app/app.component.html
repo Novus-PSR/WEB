@@ -1,1 +1,58 @@
-<router-outlet></router-outlet>
+<!-- <login *ngIf="url == 'login'"></login>
+<signup *ngIf="url == 'signup'"></signup> -->
+<mat-sidenav-container class="sidenav-container" *ngIf="url !='login'">
+    <mat-sidenav #drawer class="sidenav remove-borders" fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="(isHandset$ | async) === false">
+        <mat-toolbar></mat-toolbar>
+        <mat-nav-list>
+            <!-- <a mat-list-item href="#">Link 1</a>
+            <a mat-list-item href="#">Link 2</a>
+            <a mat-list-item href="#">Link 3</a> -->
+            <div class="flex-container button-margin">
+                <button class="button-padding" mat-button aria-label="Example icon button with a vertical three dot icon">
+                    <i data-feather="home"></i>
+                    <!-- <mat-icon>more_vert</mat-icon> -->
+                </button>
+            </div>
+            <div class="flex-container button-margin">
+                <button class="button-padding" mat-button aria-label="Example icon button with a vertical three dot icon">
+                    <i data-feather="book-open"></i>
+                    <!-- <mat-icon>more_vert</mat-icon> -->
+                </button>
+            </div>
+            <div class="flex-container button-margin">
+                <button class="button-padding" mat-button aria-label="Example icon button with a vertical three dot icon">
+                    <i data-feather="file-text"></i>
+                    <!-- <mat-icon>more_vert</mat-icon> -->
+                </button>
+            </div>
+            <div class="flex-container button-margin">
+                <button class="button-padding" mat-button aria-label="Example icon button with a vertical three dot icon">
+                    <i data-feather="users"></i>
+                    <!-- <mat-icon>more_vert</mat-icon> -->
+                </button>
+            </div>
+            <div class="flex-container button-margin">
+                <button class="button-padding" mat-button aria-label="Example icon button with a vertical three dot icon">
+                    <i data-feather="settings"></i>
+                    <!-- <mat-icon>more_vert</mat-icon> -->
+                </button>
+            </div>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar class="remove-borders">
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+                *ngIf="isHandset$ | async">
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+            <div>
+                <img src="src/assets/tecnologico-de-monterrey-blue.png" alt="image">
+            </div>
+        </mat-toolbar>
+        <!-- Add Content Here -->
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<router-outlet *ngIf="url =='login' || url =='signup'"></router-outlet>
