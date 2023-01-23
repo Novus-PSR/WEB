@@ -28,7 +28,8 @@ export class LoginComponent implements OnInit {
     };
 
     this.api.loginPipe(json).subscribe((resp:any) => {
-      console.log(resp);
+      document.cookie = "token=" + resp.token + "; expires=" + resp.exp;
+      this.router.navigateByUrl('/courses');
     });
   }
 
