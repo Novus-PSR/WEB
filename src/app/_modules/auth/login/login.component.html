@@ -5,13 +5,12 @@
         <small class="hint"> Ingresa los datos para continuar.</small>
         <form (ngSubmit)="login()">
             <input type="text" placeholder="Email" [(ngModel)]="email" name="email">
-            <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
+            <input type="password" placeholder="Contraseña" [(ngModel)]="password" name="password">
             <a href="#" class="hint">¿Olvidaste tu contraseña?</a>
             <button type="submit" class="btn-primary">Ingresar</button>
         </form>
         <div class="card-footer">
             <p class="p"> ¿Aún no tienes cuenta?</p>
-            <!-- <a href="signup"><button class="btn-secondary"> Regístrate </button></a> -->
             <button class="btn-secondary" (click)="goToSignUp()"> Regístrate </button>
         </div>
     </div>

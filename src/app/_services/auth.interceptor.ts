@@ -13,8 +13,8 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const token = localStorage['token'];
-
+    const token = document.cookie.split('; ').find(row => row.startsWith('token='))?.split('=')[1];
+    
     if (!token) {
       return next.handle(request);
     }
