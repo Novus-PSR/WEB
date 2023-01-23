@@ -1,0 +1,21 @@
+.mat-toolbar{
+    background-color: #FDFDFD;
+}
+
+.panel-container {
+    display: flex;
+  }
+  
+.panel-container * {
+    flex-grow: 1;
+}
+
+.first-tool-bar {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 16px;
+  }
+  
+.mat-expansion-panel{
+    top: 100px;
+}
