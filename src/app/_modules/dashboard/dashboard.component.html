@@ -1,1 +1,15 @@
-<p>hola</p>
+<nz-layout>
+    <nz-header>
+        <navbar></navbar>
+    </nz-header>
+    <nz-layout>
+        <nz-sider nzWidth="200px" nzTheme="light">
+            <sidebar></sidebar>
+        </nz-sider>
+        <nz-layout class="inner-layout">
+            <nz-content>
+                <p> hola {{user.first_name}}</p>
+            </nz-content>
+        </nz-layout>
+    </nz-layout>
+</nz-layout>

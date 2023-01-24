@@ -1,27 +1,29 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // Custom modules
-import { FormsModule } from '@angular/forms';
 import { AuthModule } from './_modules/auth/auth.module';
 import { DashboardComponent } from './_modules/dashboard/dashboard.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatInputModule} from '@angular/material/input';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
 import { CoursesModule } from './_modules/courses/courses.module';
+import { ComponentsModule } from './_components/components.module';
+
+// Services
 import { AuthInterceptor } from './_services/auth.interceptor';
+
+// NGZorro
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -34,20 +36,12 @@ import { AuthInterceptor } from './_services/auth.interceptor';
     FormsModule,
     HttpClientModule,
     AuthModule,
-    BrowserAnimationsModule,
-    MatSlideToggleModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatInputModule,
-    MatExpansionModule,
-    MatMenuModule,
-    MatButtonModule,
-    LayoutModule,
-    MatIconModule,
-    MatListModule,
-    CoursesModule
+    CoursesModule,
+    ComponentsModule,
+    NzLayoutModule,
+    BrowserAnimationsModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
