@@ -1,1 +1,18 @@
-<course-list></course-list>
+<nz-layout>
+    <nz-header>
+        <navbar></navbar>
+    </nz-header>
+    <nz-layout>
+        <nz-sider nzWidth="200px" nzTheme="light">
+            <sidebar></sidebar>
+        </nz-sider>
+        <nz-layout class="inner-layout">
+            <nz-content>
+                <h1> Cursos </h1>
+                <button (click)="setAction('create')"> Agregar</button>
+                <course-list *ngIf="action == 'list'"></course-list>
+                <course-form *ngIf="action == 'create' || action == 'edit'"></course-form>
+            </nz-content>
+        </nz-layout>
+    </nz-layout>
+</nz-layout>
