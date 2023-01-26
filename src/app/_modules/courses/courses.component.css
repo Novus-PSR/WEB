@@ -2,9 +2,13 @@ nz-layout {
     height: 100%;
 }
 
-/* .inner-layout {
-    padding: 0 24px 24px;
-} */
+ .header-row {
+    margin: 45 0 0 70; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
 
 nz-content {
     background: #EBEBEB;

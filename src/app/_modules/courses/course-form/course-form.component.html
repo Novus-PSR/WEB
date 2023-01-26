@@ -1,1 +1,24 @@
-<p>course-form works!</p>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+        <nz-form-control nzErrorTip="Agregue un nombre para el curso">
+            <nz-input-group nzPrefixIcon="user">
+                <input type="text" nz-input formControlName="course_name" placeholder="Curso de prueba" />
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control nzErrorTip="Agregue un nombre para el curso">
+            <nz-input-group nzPrefixIcon="user">
+                <input type="text" nz-input formControlName="course_code" placeholder="Código del curso" />
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control nzErrorTip="Agregue un nombre para el curso">
+            <nz-input-group nzPrefixIcon="user">
+                <textarea  nz-input formControlName="course_description" placeholder="Descripción del curso"></textarea>
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+    <button nz-button nzType="primary" [nzSize]="'large'" nzShape="round">Guardar</button>
+</form>
