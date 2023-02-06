@@ -1,5 +1,5 @@
-<nz-layout>
-    <nz-header>
+<!-- <nz-layout>
+    <nz-header style="background: rgba(253, 253, 253, 1)">
         <navbar></navbar>
     </nz-header>
     <nz-layout>
@@ -9,6 +9,23 @@
         <nz-layout class="inner-layout">
             <nz-content>
                 <p> hola {{user.first_name}}</p>
+            </nz-content>
+        </nz-layout>
+    </nz-layout>
+</nz-layout> -->
+
+<nz-layout class="layout" style="padding-left:104px;">
+    <nz-sider nzWidth="104px" style="background: rgba(253, 253, 253, 1)">     
+        <sidebar></sidebar>
+    </nz-sider>
+    <nz-layout>
+        <nz-header style="background: rgba(253, 253, 253, 1); height: 88px; padding:0px; width: calc(100% - 104px);">
+            <navbar></navbar>
+        </nz-header>
+        <nz-layout class="inner-layout">
+            Titulo de pagina
+            <nz-content>
+                
             </nz-content>
         </nz-layout>
     </nz-layout>

@@ -1,6 +1,73 @@
-<div class="logo" style="background-image: url({{schoolData.logo_url}}); background-size:cover;"></div>
-<ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
+<!-- <div class="logo" style="background-image: url({{schoolData.logo_url}}); background-size:cover;"></div>
+<ul nz-menu style="color: rgba(253, 253, 253, 1)" nzMode="horizontal" class="header-menu">
     <li nz-menu-item nzSelected>nav 1</li>
     <li nz-menu-item>nav 2</li>
     <li nz-menu-item>nav 3</li>
+</ul> -->
+
+<!-- <div class="logo" style="background-image: url({{schoolData.logo_url}}); background-size:cover;"></div>
+<ul nz-menu nzMode="horizontal" class="header-menu">
+    <li nz-menu-item>
+        <p>hola</p>
+    </li>
+</ul> -->
+
+<div class="logo" style="background-image: url({{schoolData.logo_url}}); background-size:cover; margin-left:32px"></div>
+<ul nz-menu nzMode="horizontal" class="header-menu">
+    <li class="menu-item" style="margin-right: 40px;
+    margin-left: 112px; width: 100%">
+        <nz-input-group [nzPrefix]="prefixIconSearch" class="searchbar">
+            <input type="text" nz-input placeholder="Buscar" nzBorderless style="font-size: 16px;" />
+        </nz-input-group>
+        <ng-template #prefixIconSearch>
+            <span data-feather="search" style="margin:15px"></span>
+        </ng-template>
+    </li>
+    <li class="menu-item">
+        <button nzTrigger="click" nz-button nz-dropdown [nzDropdownMenu]="menu" class="btn-dropdown">
+            <app-profilepic style="margin-right: 8px;"></app-profilepic>
+            {{user.first_name}} {{user.last_name}}
+            <span data-feather="chevron-down"></span>
+        </button>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item style="justify-content: space-between;
+                padding: 8px;
+                font-size: 16px;
+                font-weight: 600;">
+                    <app-profilepic style="margin-right: 8px;"></app-profilepic>
+                    {{user.first_name}} {{user.last_name}}
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 15L12 9L6 15" stroke="black" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </li>
+                <li nzDisabled nz-menu-item style="justify-content: center;
+                padding: 0px;
+                color: #888888; font-size: 12px;
+    cursor: inherit;">{{user.email}}</li>
+                <li nz-menu-divider></li>
+                <li nz-menu-item style="border-radius: 16px;">Editar Perfil</li>
+                <li nz-menu-divider></li>
+                <li nz-menu-item style="border-radius: 16px;">Cerrar sesión</li>
+            </ul>
+        </nz-dropdown-menu>
+    </li>
+    <li class="menu-item">
+        <button nz-button nzType="text" class="custom-button-hover btn-nav">
+            <span data-feather="bell"></span>
+        </button>
+        <button nz-button nzType="text" class="custom-button-hover btn-nav">
+            <span data-feather="help-circle"></span>
+        </button>
+        <button nz-button nzType="text" class="custom-button-hover btn-nav">
+            <svg style="position: relative;
+            top: 3px;
+            left: 1px;" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M4.82514 6.58393L10.7268 9.12121L16.4645 6.62638M4.82514 6.58393L1 4.93939L10.7268 1L20.3443 4.93939L19.306 5.39084M4.82514 6.58393V11.9697C5.35337 12.6364 7.27322 13.9697 10.7268 13.9697C14.1803 13.9697 15.9909 12.6364 16.4645 11.9697V6.62638M16.4645 6.62638L19.306 5.39084M19.306 5.39084V12.8182M19.306 12.8182L17.5027 14.9394L19.306 17M19.306 12.8182L21 14.9394L19.306 17M19.306 17V19"
+                    stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+    </li>
 </ul>
