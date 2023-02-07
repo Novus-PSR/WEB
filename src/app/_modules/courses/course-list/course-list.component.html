@@ -1,5 +1,5 @@
 <div nz-row >
-    <div *ngFor="let course of courses" nz-col class="card" nzSpan="6">
+    <div *ngFor="let course of courses" nz-col class="card" nzSpan="6" (click)="open(course)">
             <p class="card-header">{{course.course_name}}</p>
             <div class="card-content">
                 <p class="card-small">{{course.course_code}}</p>

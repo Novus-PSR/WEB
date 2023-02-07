@@ -1,24 +1,32 @@
-<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
-    <nz-form-item>
-        <nz-form-control nzErrorTip="Agregue un nombre para el curso">
-            <nz-input-group nzPrefixIcon="user">
-                <input type="text" nz-input formControlName="course_name" placeholder="Curso de prueba" />
-            </nz-input-group>
-        </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-        <nz-form-control nzErrorTip="Agregue un nombre para el curso">
-            <nz-input-group nzPrefixIcon="user">
-                <input type="text" nz-input formControlName="course_code" placeholder="Código del curso" />
-            </nz-input-group>
-        </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-        <nz-form-control nzErrorTip="Agregue un nombre para el curso">
-            <nz-input-group nzPrefixIcon="user">
-                <textarea  nz-input formControlName="course_description" placeholder="Descripción del curso"></textarea>
-            </nz-input-group>
-        </nz-form-control>
-    </nz-form-item>
-    <button nz-button nzType="primary" [nzSize]="'large'" nzShape="round">Guardar</button>
-</form>
+<div class="card">
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Agregue un nombre para el curso">
+                <nz-input-group>
+                    <label for="course_name">Nombre del curso</label>
+                    <input type="text" nz-input formControlName="course_name" placeholder="Biología I" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Agregue un nombre para el curso">
+                <nz-input-group>
+                    <label for="course_code">Código del curso</label>
+                    <input type="text" nz-input formControlName="course_code" placeholder="BIO01" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Agregue una descripción para el curso">
+                <nz-textarea-count [nzMaxCharacterCount]="100">
+                    <label for="comment">Descripción del curso</label>
+                    <textarea required rows="4" formControlName="course_description" nz-input></textarea>
+                </nz-textarea-count>
+            </nz-form-control>
+        </nz-form-item>
+        <div class="card-footer">
+            <button nz-button nzType="default" [nzSize]="'large'" nzShape="round">Cancelar</button>
+            <button nz-button nzType="primary" [nzSize]="'large'" nzShape="round">Guardar</button>
+        </div>
+    </form>
+</div>

@@ -14,10 +14,21 @@
                         <span nz-icon nzType="plus-circle"></span>
                         Agregar
                     </button>
-                    <!-- <button class="header-row-element btn-primary" (click)="setAction('create')"> Agregar</button> -->
                 </div>
-                <course-list *ngIf="action == 'list'"></course-list>
+                <course-list *ngIf="action == 'list'" (courseEmitter)="openCourse($event)" [deletedCourse]="deletedCourse"></course-list>
                 <course-form *ngIf="action == 'create' || action == 'edit'" (actionEmitter)="setAction($event)"></course-form>
+                <nz-modal [nzFooter]="modalFooter" [(nzVisible)]="isVisible" nzTitle="{{course.course_name}}" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+                    <ng-container *nzModalContent>
+                      <p>{{course.course_code}}</p>
+                      <p>{{course.course_description}}</p>
+                    </ng-container>
+                    <ng-template #modalFooter>
+                        <button nz-button nzType="default" nzDanger (click)="deleteCourse(course.id)">
+                            <span nz-icon nzType="delete"></span>
+                        </button>
+                    </ng-template>
+                </nz-modal>
+                <!-- <course-form></course-form> -->
             </nz-content>
         </nz-layout>
     </nz-layout>

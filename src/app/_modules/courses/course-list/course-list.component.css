@@ -5,6 +5,10 @@
     margin: 24px 24px 24px 24px;
 }
 
+.card:hover {
+    cursor: pointer;
+}
+
 .card-footer {
     background-color: #A663CC;
     width: 100%;

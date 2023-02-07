@@ -14,6 +14,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { NzMessageModule } from 'ng-zorro-antd/message';
     ReactiveFormsModule,
     NzSelectModule,
     NzAlertModule,
-    NzMessageModule
+    NzMessageModule,
+    NzInputModule,
+    NzModalModule
   ],
   exports: [
     CoursesComponent,

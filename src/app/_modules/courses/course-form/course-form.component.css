@@ -1,11 +1,22 @@
-[nz-form] {
-    max-width: 600px;
+.card {
+    background-color: #FDFDFD;
+    box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+}
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5em;
 }
 
-.phone-select {
-    width: 70px;
+button {
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 3em;
 }
 
-.register-are {
-    margin-bottom: 8px;
+form {
+    max-width: 80%;
+    padding-top: 3em;
+    margin: auto;
 }
