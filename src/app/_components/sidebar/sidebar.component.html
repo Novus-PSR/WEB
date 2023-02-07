@@ -1,23 +1,34 @@
 <ul nz-menu nzMode="inline" class="sider-menu">
-    <li nz-menu-item [nzSelected]="url=='dashboard'">
-        <a routerLink="/dashboard" routerLinkActive="active">
-            <span nz-icon nzType="dashboard" nzTheme="outline"></span>
-            <span>Dashboard</span>
-        </a>
+    <nz-header style="background: rgba(253, 253, 253, 1)">
+    </nz-header>
+    <li class="li-sidebar" routerLink="/dashboard">
+        <button style="padding-left:15px; display:inline-flex;" nz-menu-item nz-button nzType="text" class="custom-button-hover btn">
+            <span data-feather="home"></span>
+        </button>
     </li>
-    
-    <li nz-menu-item [nzSelected]="url=='courses'">
-        <a routerLink="/courses" routerLinkActive="active">
-            <span nz-icon nzType="book" nzTheme="outline"></span>
-            <span>Courses</span>
-        </a>
+    <li class="li-sidebar" routerLink="/courses">
+        <button style="padding-left:15px; display:inline-flex" nz-menu-item nz-button nzType="text" class="custom-button-hover">
+            <span data-feather="book-open"></span>
+        </button>
     </li>
-    <!-- <li nz-submenu nzOpen nzIcon="user" nzTitle="subnav 1">
-        <ul>
-            <li nz-menu-item>option1</li>
-            <li nz-menu-item>option2</li>
-            <li nz-menu-item>option3</li>
-            <li nz-menu-item>option4</li>
-        </ul>
-    </li> -->
+    <li class="li-sidebar">
+        <button style="padding-left:15px; display:inline-flex" nz-menu-item nz-button nzType="text" class="custom-button-hover btn">
+            <span data-feather="file-text"></span>
+        </button>
+    </li>
+    <li class="li-sidebar">
+        <button style="padding-left:15px; display:inline-flex" nz-menu-item nz-button nzType="text" class="custom-button-hover btn">
+            <span data-feather="target"></span>
+        </button>
+    </li>
+    <li class="li-sidebar">
+        <button style="padding-left:15px; display:inline-flex" nz-menu-item nz-button nzType="text" class="custom-button-hover btn">
+            <span data-feather="users"></span>
+        </button>
+    </li>
+    <li class="li-sidebar">
+        <button style="padding-left:15px; display:inline-flex"nz-menu-item nz-button nzType="text" class="custom-button-hover btn">
+            <span data-feather="settings"></span>
+        </button>
+    </li>
 </ul>
