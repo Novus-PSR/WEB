@@ -23,6 +23,7 @@ import en from '@angular/common/locales/en';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 registerLocaleData(en);
 
 @NgModule({

@@ -2,3 +2,33 @@
     height: 100%;
     border-right: 0;
 }
+
+[nz-button] {
+    margin-bottom: 16px;
+    margin-top: 16px;
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+}
+
+.li-sidebar {
+    margin-left: 24px;
+}
+
+.custom-button-hover:hover {
+    background-color: rgba(227, 196, 241, 1);
+    color:black
+}
+
+.ant-layout-header {
+    margin: 16px 0px;
+}
+
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+    background-color: rgba(227, 196, 241, 1);
+    color:black;
+}
+
+.ant-menu-inline .ant-menu-item::after, .ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after{
+    border-right:0px;
+}
