@@ -12,7 +12,8 @@ export class LoginComponent implements OnInit {
 
   email : string = "";
   password : string = "";
-  
+  loading :  boolean = false;
+
   constructor(
     private api : ApiService,
     private router : Router
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.loading = true;
     let json = {
       "email": this.email,
       "password": this.password
@@ -31,6 +33,7 @@ export class LoginComponent implements OnInit {
       document.cookie = "token=" + tokenData.token + "; expires=" + tokenData.exp;
       this.api.getPipe('users/' + tokenData.user_id).subscribe((userData:any) => {
         document.cookie = "user=" + JSON.stringify(userData), + "; expires=" + tokenData.exp;
+        this.loading = false;
         this.router.navigateByUrl('/dashboard');
       });
     });

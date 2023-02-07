@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.api.getPipe('schools/' + this.user.schools[0].id).subscribe((schoolData:any) => {
       this.schoolData = schoolData;
+      localStorage.setItem('school', JSON.stringify(schoolData));
     });
   }
 
