@@ -1,18 +1,3 @@
-<!-- <nz-layout>
-    <nz-header>
-        <navbar></navbar>
-    </nz-header>
-    <nz-layout>
-        <nz-sider nzWidth="200px" nzTheme="light">
-            <sidebar></sidebar>
-        </nz-sider>
-        <nz-layout class="inner-layout">
-            <nz-content>
-            </nz-content>
-        </nz-layout>
-    </nz-layout>
-</nz-layout> -->
-
 <nz-layout class="layout" style="padding-left:104px;">
     <nz-sider nzWidth="104px" style="background: rgba(253, 253, 253, 1)">     
         <sidebar></sidebar>
@@ -22,7 +7,7 @@
             <navbar></navbar>
         </nz-header>
         <nz-layout class="inner-layout">
-            <div class="header-row">
+            <div class="header-row" *ngIf="action == 'list'">
                 <h1 class="header-row-element"> Cursos </h1>
                 <button nz-button nzType="primary" (click)="setAction('create')" [nzSize]="'large'" nzShape="round">
                     <span nz-icon nzType="plus-circle"></span>
@@ -31,18 +16,8 @@
             </div>
             <nz-content>
                 <course-list *ngIf="action == 'list'" (courseEmitter)="openCourse($event)" [deletedCourse]="deletedCourse"></course-list>
-                <course-form *ngIf="action == 'create' || action == 'edit'" (actionEmitter)="setAction($event)"></course-form>
-                <nz-modal [nzFooter]="modalFooter" [(nzVisible)]="isVisible" nzTitle="{{course.course_name}}" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-                    <ng-container *nzModalContent>
-                      <p>{{course.course_code}}</p>
-                      <p>{{course.course_description}}</p>
-                    </ng-container>
-                    <ng-template #modalFooter>
-                        <button nz-button nzType="default" nzDanger (click)="deleteCourse(course.id)">
-                            <span nz-icon nzType="delete"></span>
-                        </button>
-                    </ng-template>
-                </nz-modal>
+                <course-form *ngIf="action == 'create' " (actionEmitter)="setAction($event)"></course-form>
+                <course-view *ngIf="action == 'view' || action == 'edit'" [course_id]="course_id" (cancelEmitter)="setAction($event)"></course-view>
             </nz-content>
         </nz-layout>
     </nz-layout>

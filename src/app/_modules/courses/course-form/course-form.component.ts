@@ -48,4 +48,8 @@ export class CourseFormComponent implements OnInit {
       });
     }
   }
+  
+  cancel() {
+    this.actionEmitter.emit("list");
+  }
 }

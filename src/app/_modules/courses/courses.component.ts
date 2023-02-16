@@ -1,5 +1,7 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/_services/api.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'courses',
@@ -8,6 +10,8 @@ import { ApiService } from 'src/app/_services/api.service';
 })
 
 export class CoursesComponent implements OnInit {
+  course_id: any;
+
   deletedCourse = "";
   action = "list";
   isVisible = false;
@@ -17,14 +21,20 @@ export class CoursesComponent implements OnInit {
     "course_code": "",
     "course_description": "",
     "school_id": "",
+    "groups": [{ "id": "", "group_name": "", "group_description": "", "course_id": "", "created_at": "", "updated_at": "" }],
     "created_at": "",
     "updated_at": ""
   }
   constructor(
-    private api : ApiService
+    private api: ApiService,
+    private msg: NzMessageService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(paramMap => {
+      this.course_id = paramMap.get('course_id');
+    })
   }
 
   setAction(action: string) {
@@ -32,10 +42,8 @@ export class CoursesComponent implements OnInit {
   }
 
   openCourse(event: any) {
-    this.api.getPipe('courses/'+event).subscribe((data: any) => {
-      this.course = data;
-      this.showModal();
-    }); 
+    this.action = "view";
+    this.course_id = event;
   }
 
   showModal(): void {
@@ -47,11 +55,14 @@ export class CoursesComponent implements OnInit {
     this.resetData();
   }
 
-  deleteCourse(id : any) {
-    this.api.deletePipe('courses/'+id).subscribe((data: any) => {
-      this.deletedCourse = id;  
+  deleteCourse(id: any) {
+    this.api.deletePipe('courses/' + id).subscribe((data: any) => {
+      this.msg.success("Curso borrado con éxito");
+      this.deletedCourse = id;
       this.isVisible = false;
       this.resetData();
+    }, (err: any) => {
+      this.msg.error("Error borrando el curso, inténtelo de nuevo");
     });
   }
 
@@ -67,6 +78,7 @@ export class CoursesComponent implements OnInit {
       "course_code": "",
       "course_description": "",
       "school_id": "",
+      "groups": [{ "id": "", "group_name": "", "group_description": "", "course_id": "", "created_at": "", "updated_at": "" }],
       "created_at": "",
       "updated_at": ""
     }
