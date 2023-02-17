@@ -23,7 +23,9 @@ export class CourseFormComponent implements OnInit {
     this.validateForm = this.fb.group({
       course_name: [null, [Validators.required]],
       course_code: [null, [Validators.required]],
-      course_description: [null, [Validators.required]]
+      course_description: [null, [Validators.required]],
+      course_type: [null, [Validators.required]],
+      course_semester: [null, [Validators.required]],
     });
   }
 

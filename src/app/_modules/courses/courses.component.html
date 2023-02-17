@@ -17,7 +17,7 @@
             <nz-content>
                 <course-list *ngIf="action == 'list'" (courseEmitter)="openCourse($event)" [deletedCourse]="deletedCourse"></course-list>
                 <course-form *ngIf="action == 'create' " (actionEmitter)="setAction($event)"></course-form>
-                <course-view *ngIf="action == 'view' || action == 'edit'" [course_id]="course_id" (cancelEmitter)="setAction($event)"></course-view>
+                <course-view *ngIf="action == 'view' || action == 'edit'" [course_id]="course_id" (viewEmitter)="setAction($event)"></course-view>
             </nz-content>
         </nz-layout>
     </nz-layout>

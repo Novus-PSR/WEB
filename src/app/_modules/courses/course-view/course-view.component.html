@@ -1,27 +1,29 @@
 <div nz-row class="container">
     <div nz-col nzSpan="18" style="height: 100%;">
-        <div class="card top-card">
-            <p class="h1">{{course.course_name}}</p>
-            <div nz-row>
-                <div nz-col nzSpan="12">
-                    <textarea nz-input [(ngModel)]="course.course_description">
+        <form nz-form [formGroup]="validateForm">
+            <div class="card top-card">
+                <input nz-input formControlName="course_name" [(ngModel)]="course.course_name" class="h1" />
+                <div nz-row>
+                    <div nz-col nzSpan="12">
+                        <textarea nz-input formControlName="course_description" [(ngModel)]="course.course_description">
             </textarea>
-                </div>
-                <div nz-col nzSpan="12">
-                    <div>
-                        <p class="form-item">Código: </p><input nz-input [(ngModel)]="course.course_code" />
                     </div>
+                    <div nz-col nzSpan="12">
+                        <div>
+                            <p class="form-item">Código: </p><input nz-input formControlName="course_code" [(ngModel)]="course.course_code" />
+                        </div>
 
-                    <div>
-                        <p class="form-item">Semestre: </p><input nz-input [(ngModel)]="course.semester" />
-                    </div>
+                        <div>
+                            <p class="form-item">Semestre: </p><input nz-input formControlName="semester"[(ngModel)]="course.semester" />
+                        </div>
 
-                    <div>
-                        <p class="form-item">Tipo de UF: </p><input nz-input [(ngModel)]="course.course_type" />
+                        <div>
+                            <p class="form-item">Tipo de UF: </p><input nz-input formControlName="course_type" [(ngModel)]="course.course_type" />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
         <div nz-row class="bottom-cards">
             <div nz-col nzSpan="12">
                 <div class="card left-card">
@@ -47,11 +49,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="competencies">
-            <p *ngFor="let competency of course.competencies">
-                {{competency.name}}
-            </p>
-        </div> -->
     </div>
     <div nz-col nzSpan="6">
         <div class="card comp-card">
@@ -78,7 +75,7 @@
         </div>
         <div class="float-right">
             <button nz-button nzType="default" [nzSize]="'large'" nzShape="round" (click)="cancel()">Cancelar</button>
-            <button nz-button nzType="primary" [nzSize]="'large'" nzShape="round">Guardar cambios</button>
+            <button nz-button nzType="primary" [nzSize]="'large'" nzShape="round" (click)="submitForm()" [disabled]="validateForm.untouched">Guardar cambios</button>
         </div>
     </div>
 </div>
