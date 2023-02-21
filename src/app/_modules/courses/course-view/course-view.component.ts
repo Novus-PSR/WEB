@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ApiService } from 'src/app/_services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'course-view',
@@ -20,7 +21,8 @@ export class CourseViewComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private api : ApiService,
-    private msg: NzMessageService
+    private msg: NzMessageService,
+    private modal: NzModalService
   ) {}
 
   ngOnInit(): void {
@@ -64,6 +66,27 @@ export class CourseViewComponent implements OnInit {
     this.isVisible = false;
   }
 
+  deleteCourse() {
+    this.api.deletePipe('courses/' + this.course.id).subscribe((resp:any) => {
+      this.msg.success("Curso eliminado con éxito");
+      this.viewEmitter.emit("list");
+    }, (err:any) => {
+      this.msg.error("Error eliminando el curso, inténtelo de nuevo");
+    });
+  }
+
+  showDeleteConfirm(): void {
+    this.modal.confirm({
+      nzTitle: '¿Seguro que quieres borrar este curso?',
+      nzContent: '<b style="color: red;">Tendrás que crear el curso otra vez si haces esto</b>',
+      nzOkText: 'Sí',
+      nzOkType: 'primary',
+      nzOkDanger: true,
+      nzOnOk: () => this.deleteCourse(),
+      nzCancelText: 'No',
+      nzOnCancel: () => console.log('Cancel')
+    });
+  }
 
   getCompetencies() {
     this.api.getPipe('competencies').subscribe((data: any) => {
