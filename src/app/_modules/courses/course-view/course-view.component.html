@@ -55,10 +55,10 @@
             <p class="h2">Competencias</p>
             <p *ngIf="course.competencies.length == 0"> No hay competencias asociadas a este curso</p>
             <div *ngIf="course.competencies.length != 0" class="competency">
-                <div nz-row *ngFor="let competency of course.competencies">
+                <div nz-row *ngFor="let competency of course.competencies" style="margin: 16px 0px 16px 0px;">
                     <div nz-col nzSpan="3" style="background:#B76EDA; border-radius: 16px 0px 0px 16px;">
                     </div>
-                    <div nz-col nzSpan="21">
+                    <div nz-col nzSpan="21" style="background: #EBEBEB; border-radius: 0px 16px 16px 0px;">
                         <p
                             style="font-family: 'Inter';font-weight: 600;font-size: 16px; padding: 12px 8px 0px; margin-bottom: 0px;">
                             {{competency.name}}</p>
@@ -68,7 +68,7 @@
                     </div>
                 </div>
             </div>
-            <button id="addCompetency" nz-button nzType="primary" [nzSize]="'large'" nzShape="round">
+            <button id="addCompetency" nz-button nzType="primary" [nzSize]="'large'" nzShape="round" (click)="showModal()">
                 <span nz-icon nzType="plus-circle"></span>
                 Agregar
             </button>
@@ -79,3 +79,10 @@
         </div>
     </div>
 </div>
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Agregar competencia" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <ng-container *nzModalContent>
+        <nz-select nzShowSearch nzPlaceHolder="Selecciona una competencia" [(ngModel)]="selectedCompetency" (ngModelChange)="onCompetencyChange($event)" [nzNotFoundContent]="'No se encontraron competencias'">
+            <nz-option *ngFor="let competency of competencies" [nzLabel]="competency.name" [nzValue]="competency"></nz-option>
+        </nz-select>
+    </ng-container>
+</nz-modal>

@@ -13,6 +13,9 @@ export class CourseViewComponent implements OnInit {
   @Input() course_id: any;
   @Output() viewEmitter = new EventEmitter<string>();
   course : any;
+  isVisible = false;
+  competencies : any;
+  selectedCompetency : any;
 
   constructor(
     private fb: FormBuilder,
@@ -32,11 +35,43 @@ export class CourseViewComponent implements OnInit {
       course_type: [null, [Validators.required]],
       semester: [null, [Validators.required]],
     });
+    this.getCompetencies();
   }
 
   cancel() {
     this.course = null;
     this.viewEmitter.emit('list');
+  }
+
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+  handleOk(): void {
+    let body = {
+      course_id: this.course.id,
+      competency_id: this.selectedCompetency.id
+    }
+    this.api.postPipe('course_competencies',body).subscribe((resp:any) => {
+      this.msg.success("Competencia agregada al curso con éxito");
+      this.course.competencies.push(this.selectedCompetency);
+    });
+    this.isVisible = false;
+  }
+
+  handleCancel(): void {
+    console.log('Button cancel clicked!');
+    this.isVisible = false;
+  }
+
+
+  getCompetencies() {
+    this.api.getPipe('competencies').subscribe((data: any) => {
+      this.competencies = data;
+    });
+  }
+
+  onCompetencyChange(event: any) {
   }
 
   submitForm() {

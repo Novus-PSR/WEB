@@ -18,6 +18,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { CourseViewComponent } from './course-view/course-view.component';
 import { Router, RouterModule } from '@angular/router';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { Router, RouterModule } from '@angular/router';
     NzMessageModule,
     NzInputModule,
     NzModalModule,
-    RouterModule
+    RouterModule,
+    NzTabsModule
   ],
   exports: [
     CoursesComponent,
