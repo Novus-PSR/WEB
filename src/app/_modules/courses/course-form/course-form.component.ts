@@ -25,7 +25,7 @@ export class CourseFormComponent implements OnInit {
       course_code: [null, [Validators.required]],
       course_description: [null, [Validators.required]],
       course_type: [null, [Validators.required]],
-      course_semester: [null, [Validators.required]],
+      semester: [null, [Validators.required]],
     });
   }
 
