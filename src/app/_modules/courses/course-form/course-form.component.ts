@@ -23,7 +23,9 @@ export class CourseFormComponent implements OnInit {
     this.validateForm = this.fb.group({
       course_name: [null, [Validators.required]],
       course_code: [null, [Validators.required]],
-      course_description: [null, [Validators.required]]
+      course_description: [null, [Validators.required]],
+      course_type: [null, [Validators.required]],
+      semester: [null, [Validators.required]],
     });
   }
 
@@ -47,5 +49,9 @@ export class CourseFormComponent implements OnInit {
         }
       });
     }
+  }
+  
+  cancel() {
+    this.actionEmitter.emit("list");
   }
 }

@@ -17,6 +17,22 @@
             </nz-form-control>
         </nz-form-item>
         <nz-form-item>
+            <nz-form-control nzErrorTip="Agregue un semestre para el curso">
+                <nz-input-group>
+                    <label for="semester">Semestre en que se imparte</label>
+                    <input type="number" nz-input formControlName="semester" placeholder="6" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-control nzErrorTip="Agregue un tipo para el curso">
+                <nz-input-group>
+                    <label for="course_type">Tipo de curso</label>
+                    <input type="text" nz-input formControlName="course_type" placeholder="Transversal" />
+                </nz-input-group>
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
             <nz-form-control nzErrorTip="Agregue una descripción para el curso">
                 <nz-textarea-count [nzMaxCharacterCount]="100">
                     <label for="comment">Descripción del curso</label>
@@ -25,7 +41,7 @@
             </nz-form-control>
         </nz-form-item>
         <div class="card-footer">
-            <button nz-button nzType="default" [nzSize]="'large'" nzShape="round">Cancelar</button>
+            <button nz-button nzType="default" [nzSize]="'large'" nzShape="round" (click)="cancel()">Cancelar</button>
             <button nz-button nzType="primary" [nzSize]="'large'" nzShape="round">Guardar</button>
         </div>
     </form>

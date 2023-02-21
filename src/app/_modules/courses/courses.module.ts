@@ -16,12 +16,16 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { CourseViewComponent } from './course-view/course-view.component';
+import { Router, RouterModule } from '@angular/router';
+import { NzTabsModule } from 'ng-zorro-antd/tabs';
 
 @NgModule({
   declarations: [
     CoursesComponent,
     CourseListComponent,
-    CourseFormComponent
+    CourseFormComponent,
+    CourseViewComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +42,9 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
     NzAlertModule,
     NzMessageModule,
     NzInputModule,
-    NzModalModule
+    NzModalModule,
+    RouterModule,
+    NzTabsModule
   ],
   exports: [
     CoursesComponent,
