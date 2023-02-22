@@ -1,1 +1,9 @@
-<p>competency-list works!</p>
+<div nz-row >
+    <div *ngFor="let competency of competencies" nz-col class="card" nzSpan="6" (click)="open(competency)">
+            <p class="card-header">{{competency.name}}</p>
+            <div class="card-content">
+                <p class="card-small">{{competency.competency_code}}</p>
+            </div>
+            <div class="card-footer"></div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'competency-form',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./competency-form.component.css']
 })
 export class CompetencyFormComponent {
-
+  @Output() actionEmitter = new EventEmitter<string>();
 }

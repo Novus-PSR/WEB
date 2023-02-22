@@ -9,16 +9,6 @@ import { Component, OnInit } from '@angular/core';
 export class CoursesComponent implements OnInit {
   course_id: any;
   action = "list";
-  course = {
-    "id": "",
-    "course_name": "",
-    "course_code": "",
-    "course_description": "",
-    "school_id": "",
-    "groups": [{ "id": "", "group_name": "", "group_description": "", "course_id": "", "created_at": "", "updated_at": "" }],
-    "created_at": "",
-    "updated_at": ""
-  }
 
   constructor() { }
 

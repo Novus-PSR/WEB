@@ -1,1 +1,57 @@
-<p>competency-view works!</p>
+<div class="container">
+    <form nz-form [formGroup]="validateForm">
+        <div class="card top-card">
+            <input nz-input formControlName="name" [(ngModel)]="competency.name" class="h1" />
+            <div nz-row>
+                <div nz-col nzSpan="12">
+                    <textarea nz-input formControlName="description" [(ngModel)]="competency.description">
+            </textarea>
+                </div>
+                <div nz-col nzSpan="12">
+                    <div>
+                        <p class="form-item">Código: </p><input nz-input formControlName="competency_code"
+                            [(ngModel)]="competency.competency_code" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="bottom-cards card">
+        <p class="h2">Cursos</p>
+        <nz-table #basicTable [nzData]="competency.courses" style="margin-right: 24px;">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Semestre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of basicTable.data">
+                    <td>{{ data.course_code }}</td>
+                    <td>{{ data.course_name }}</td>
+                    <td>{{ data.course_type }}</td>
+                    <td>{{ data.semester }}</td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+    <div nz-row>
+        <div nz-col nzSpan="18">
+            <button nz-button nzType="dashed" [nzSize]="'large'" nzShape="round" nzDanger
+                style="margin: 20px 0px 0px 0px;" (click)="showDeleteConfirm()">
+                <span nz-icon nzType="delete"></span>
+                Borrar competencia
+            </button>
+        </div>
+        <div nz-col nzSpan="6">
+            <div class="float-right">
+                <button nz-button nzType="default" [nzSize]="'large'" nzShape="round"
+                    (click)="cancel()">Cancelar</button>
+                <button nz-button nzType="primary" [nzSize]="'large'" nzShape="round" (click)="submitForm()"
+                    [disabled]="validateForm.untouched">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>

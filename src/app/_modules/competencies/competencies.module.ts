@@ -8,6 +8,11 @@ import { CompetenciesComponent } from './competencies.component';
 import { ComponentsModule } from 'src/app/_components/components.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 @NgModule({
   declarations: [
@@ -20,7 +25,13 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
     CommonModule,
     ComponentsModule,
     NzLayoutModule,
-    NzButtonModule
+    NzButtonModule,
+    NzGridModule,
+    NzFormModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NzInputModule,
+    NzTableModule
   ],
   exports: [
     CompetenciesComponent,

@@ -11,7 +11,7 @@ export class CourseListComponent implements OnInit {
   @Output() courseEmitter = new EventEmitter<string>();
 
   constructor(
-    private apiService: ApiService
+    private api: ApiService
   ) { }
 
   ngOnInit(): void {
@@ -19,7 +19,7 @@ export class CourseListComponent implements OnInit {
   }
 
   getCourses() {
-    this.apiService.getPipe('courses').subscribe((data: any) => {
+    this.api.getPipe('courses').subscribe((data: any) => {
       this.courses = data;
     });
   }
