@@ -18,7 +18,6 @@ import { IconsModule } from './icons/icons.module';
 import { NotificationComponent } from './notification/notification.component';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { BarComponent } from './bar/bar.component';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
