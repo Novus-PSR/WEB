@@ -4,7 +4,12 @@ nz-layout {
 
 .inner-layout {
     padding: 133px 56px 24px;
-    background-color: #ebebeb;
+    background-color: rgba(235, 235, 235, 1);
+    /* font-weight:700; */
+    /* font-size:36px; */
+    /* font-family: 'Inter'; */
+    /* font-style: normal; */
+    /* line-height: 44px; */
 }
 
  .header-row {
@@ -17,7 +22,7 @@ nz-layout {
 
 nz-content {
     background: #EBEBEB;
-    /* padding: 24px; */
+    padding: 24px;
     min-height: 280px;
     margin-top: 23px;
     border-radius: 16px;

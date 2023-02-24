@@ -11,7 +11,8 @@ import { AuthModule } from './_modules/auth/auth.module';
 import { DashboardComponent } from './_modules/dashboard/dashboard.component';
 import { CoursesModule } from './_modules/courses/courses.module';
 import { ComponentsModule } from './_components/components.module';
-
+import { DecksModule } from './_modules/decks/decks.module';
+import { CompetenciesModule } from './_modules/competencies/competencies.module';
 // Services
 import { AuthInterceptor } from './_services/auth.interceptor';
 
@@ -47,7 +48,9 @@ registerLocaleData(en);
     NzGridModule,
     NzProgressModule,
     NzButtonModule,
-    NzDropDownModule
+    NzDropDownModule,
+    DecksModule,
+    CompetenciesModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

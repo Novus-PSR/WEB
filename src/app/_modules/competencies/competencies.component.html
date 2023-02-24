@@ -8,16 +8,16 @@
         </nz-header>
         <nz-layout class="inner-layout">
             <div class="header-row" *ngIf="action == 'list'">
-                <h1 class="header-row-element"> Cursos </h1>
+                <h1 class="header-row-element"> Competencias </h1>
                 <button nz-button nzType="primary" (click)="setAction('create')" [nzSize]="'large'" nzShape="round">
                     <span nz-icon nzType="plus-circle"></span>
                     Agregar
                 </button>
             </div>
             <nz-content>
-                <course-list *ngIf="action == 'list'" (courseEmitter)="openCourse($event)"></course-list>
-                <course-form *ngIf="action == 'create' " (actionEmitter)="setAction($event)"></course-form>
-                <course-view *ngIf="action == 'view' || action == 'edit'" [course_id]="course_id" (viewEmitter)="setAction($event)"></course-view>
+                <competency-list *ngIf="action == 'list'" (competencyEmitter)="openCompetency($event)"></competency-list>
+                <competency-form *ngIf="action == 'create'" (actionEmitter)="setAction($event)"></competency-form>
+                <competency-view *ngIf="action == 'view' || action == 'edit'" [competency_id]="competency_id" (viewEmitter)="setAction($event)"></competency-view>
             </nz-content>
         </nz-layout>
     </nz-layout>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ApiService } from 'src/app/_services/api.service';
 
 @Component({
@@ -8,13 +8,23 @@ import { ApiService } from 'src/app/_services/api.service';
 })
 export class CourseListComponent implements OnInit {
   courses: any;
+  @Output() courseEmitter = new EventEmitter<string>();
+
   constructor(
-    private apiService: ApiService
+    private api: ApiService
   ) { }
 
   ngOnInit(): void {
-    this.apiService.getPipe('courses').subscribe((data: any) => {
+    this.getCourses();
+  }
+
+  getCourses() {
+    this.api.getPipe('courses').subscribe((data: any) => {
       this.courses = data;
     });
+  }
+
+  open(course : any) {
+    this.courseEmitter.emit(course.id);
   }
 }

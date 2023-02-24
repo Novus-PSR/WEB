@@ -9,23 +9,14 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  constructor(
-    // private breakpointObserver: BreakpointObserver,
-    // private api : ApiService
-  ) {}
+
+export class AppComponent implements OnInit {
+  constructor() {}
 
   title = 'web';
   
   url = window.location.href.split("/").slice(-1)[0];
 
-  ngOnInit():void {
-  };
+  ngOnInit():void {};
 
-  // isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-  //   .pipe(
-  //     map(result => result.matches),
-  //     shareReplay()
-  //   );
-  
 }

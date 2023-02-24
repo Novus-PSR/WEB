@@ -5,6 +5,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { RouterModule } from '@angular/router';
+import { LoadingComponent } from './loading/loading.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { ProfilepicComponent } from './profilepic/profilepic.component';
@@ -22,15 +24,17 @@ import { RouterModule } from '@angular/router';
   declarations: [
     NavbarComponent,
     SidebarComponent,
-    ProfilepicComponent,
     NotificationComponent,
     BarComponent,
+    LoadingComponent,
+    ProfilepicComponent
   ],
   imports: [
     CommonModule,
     NzLayoutModule,
     NzMenuModule,
     NzIconModule,
+    RouterModule,
     NzButtonModule,
     NzInputModule,
     NzDropDownModule,
@@ -46,7 +50,8 @@ import { RouterModule } from '@angular/router';
     SidebarComponent,
     BarComponent,
     ProfilepicComponent,
-    IconsModule
+    IconsModule,
+    LoadingComponent
   ]
 })
 export class ComponentsModule {
