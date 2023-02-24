@@ -12,7 +12,7 @@ import { DashboardComponent } from './_modules/dashboard/dashboard.component';
 import { CoursesModule } from './_modules/courses/courses.module';
 import { ComponentsModule } from './_components/components.module';
 import { DecksModule } from './_modules/decks/decks.module';
-
+import { CompetenciesModule } from './_modules/competencies/competencies.module';
 // Services
 import { AuthInterceptor } from './_services/auth.interceptor';
 
@@ -30,7 +30,7 @@ registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +42,8 @@ registerLocaleData(en);
     ComponentsModule,
     NzLayoutModule,
     BrowserAnimationsModule,
-    DecksModule
+    DecksModule,
+    CompetenciesModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

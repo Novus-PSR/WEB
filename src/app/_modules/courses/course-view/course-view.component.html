@@ -10,15 +10,18 @@
                     </div>
                     <div nz-col nzSpan="12">
                         <div>
-                            <p class="form-item">Código: </p><input nz-input formControlName="course_code" [(ngModel)]="course.course_code" />
+                            <p class="form-item">Código: </p><input nz-input formControlName="course_code"
+                                [(ngModel)]="course.course_code" />
                         </div>
 
                         <div>
-                            <p class="form-item">Semestre: </p><input nz-input formControlName="semester"[(ngModel)]="course.semester" />
+                            <p class="form-item">Semestre: </p><input nz-input formControlName="semester"
+                                [(ngModel)]="course.semester" />
                         </div>
 
                         <div>
-                            <p class="form-item">Tipo de UF: </p><input nz-input formControlName="course_type" [(ngModel)]="course.course_type" />
+                            <p class="form-item">Tipo de UF: </p><input nz-input formControlName="course_type"
+                                [(ngModel)]="course.course_type" />
                         </div>
                     </div>
                 </div>
@@ -49,10 +52,11 @@
                 </div>
             </div>
         </div>
-    <button nz-button nzType="dashed" [nzSize]="'large'" nzShape="round" nzDanger style="margin: 20px 0px 0px 0px;" (click)="showDeleteConfirm()">
+        <button nz-button nzType="dashed" [nzSize]="'large'" nzShape="round" nzDanger style="margin: 20px 0px 0px 0px;"
+            (click)="showDeleteConfirm()">
             <span nz-icon nzType="delete"></span>
             Borrar curso
-          </button>
+        </button>
     </div>
     <div nz-col nzSpan="6">
         <div class="card comp-card">
@@ -72,21 +76,25 @@
                     </div>
                 </div>
             </div>
-            <button id="addCompetency" nz-button nzType="primary" [nzSize]="'large'" nzShape="round" (click)="showModal()">
+            <button id="addCompetency" nz-button nzType="primary" [nzSize]="'large'" nzShape="round"
+                (click)="showModal()">
                 <span nz-icon nzType="plus-circle"></span>
                 Agregar
             </button>
         </div>
         <div class="float-right">
             <button nz-button nzType="default" [nzSize]="'large'" nzShape="round" (click)="cancel()">Cancelar</button>
-            <button nz-button nzType="primary" [nzSize]="'large'" nzShape="round" (click)="submitForm()" [disabled]="validateForm.untouched">Guardar cambios</button>
+            <button nz-button nzType="primary" [nzSize]="'large'" nzShape="round" (click)="submitForm()"
+                [disabled]="validateForm.untouched">Guardar cambios</button>
         </div>
     </div>
 </div>
 <nz-modal [(nzVisible)]="isVisible" nzTitle="Agregar competencia" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
     <ng-container *nzModalContent>
-        <nz-select nzShowSearch nzPlaceHolder="Selecciona una competencia" [(ngModel)]="selectedCompetency" (ngModelChange)="onCompetencyChange($event)" [nzNotFoundContent]="'No se encontraron competencias'">
-            <nz-option *ngFor="let competency of competencies" [nzLabel]="competency.name" [nzValue]="competency"></nz-option>
+        <nz-select nzShowSearch nzPlaceHolder="Selecciona una competencia" [(ngModel)]="selectedCompetency"
+            (ngModelChange)="onCompetencyChange($event)" [nzNotFoundContent]="'No se encontraron competencias'">
+            <nz-option *ngFor="let competency of competencies" [nzLabel]="competency.name"
+                [nzValue]="competency"></nz-option>
         </nz-select>
     </ng-container>
 </nz-modal>

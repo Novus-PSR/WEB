@@ -4,12 +4,13 @@ import { ApiService } from 'src/app/_services/api.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
-  selector: 'course-form',
-  templateUrl: './course-form.component.html',
-  styleUrls: ['./course-form.component.css']
+  selector: 'competency-form',
+  templateUrl: './competency-form.component.html',
+  styleUrls: ['./competency-form.component.css']
 })
-export class CourseFormComponent implements OnInit {
+export class CompetencyFormComponent implements OnInit {
   validateForm!: FormGroup;
+  user = JSON.parse(document.cookie.split('user=')[1].split(';')[0]);
   @Output() actionEmitter = new EventEmitter<string>();
 
   constructor(
@@ -20,11 +21,9 @@ export class CourseFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      course_name: [null, [Validators.required]],
-      course_code: [null, [Validators.required]],
-      course_description: [null, [Validators.required]],
-      course_type: [null, [Validators.required]],
-      semester: [null, [Validators.required]],
+      name: [null, [Validators.required]],
+      description: [null, [Validators.required]],
+      competency_code: [null, [Validators.required]],
     });
   }
 
@@ -34,11 +33,14 @@ export class CourseFormComponent implements OnInit {
       if (schoolData) {
         this.validateForm.value.school_id = JSON.parse(schoolData).id;
       }
-      this.api.postPipe('courses',this.validateForm.value).subscribe((resp:any) => {
-        this.msg.success("Curso creado con éxito");
+
+      let school_member_id = this.user.school_members[0].id;
+      this.validateForm.value.created_by_id = school_member_id;
+      this.api.postPipe('competencies',this.validateForm.value).subscribe((resp:any) => {
+        this.msg.success("Competencia creada con éxito");
         this.actionEmitter.emit("list");
       }, (err:any) => {
-        this.msg.error("Error creando el curso, inténtelo de nuevo");
+        this.msg.error("Error creando la competencia, inténtelo de nuevo");
       });
     } else {
       Object.values(this.validateForm.controls).forEach(control => {

@@ -4,6 +4,7 @@ import { AuthComponent } from './_modules/auth/auth.component';
 import { DashboardComponent } from './_modules/dashboard/dashboard.component';
 import { CoursesComponent } from './_modules/courses/courses.component';
 import { DecksComponent } from './_modules/decks/decks.component';
+import { CompetenciesComponent } from './_modules/competencies/competencies.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,9 @@ const routes: Routes = [
   },
   {
     path: 'decks', component: DecksComponent
+  },
+  {
+    path: 'competencies', component: CompetenciesComponent
   }
 ];
 
