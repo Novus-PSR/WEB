@@ -1,0 +1,8 @@
+<div id="{{i}}" class="container-div" *ngFor="let notification of notificationarray; let i = index">
+    <div class="texto-notif">
+        {{notification}}
+        <a class="a-notif" (click)="closeNotif(i)">
+            <i-feather class="icono" name="x"></i-feather>
+        </a>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+.texto-notif{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    padding: 16px 24px;
+    margin-bottom: 0;
+    position:relative;
+    color: #A74ED2;
+}
+
+.icono{
+    width: 10px;
+    height: 10px;
+}
+
+.a-notif{
+    position: absolute;
+    top:7px;
+    right:10px;
+    color: #888888
+}
+
+.a-notif:hover{
+    color: #A74ED2;
+}
+
+.container-div{
+    border-top: 1px solid #888888;
+}

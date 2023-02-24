@@ -1,5 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-import * as feather from 'feather-icons';
+import { Component, OnInit } from '@angular/core';
 import { NzButtonSize } from 'ng-zorro-antd/button';
 
 
@@ -8,12 +7,10 @@ import { NzButtonSize } from 'ng-zorro-antd/button';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent implements OnInit, AfterViewInit {
+export class SidebarComponent implements OnInit {
   constructor(){}
   ngOnInit(): void {
   }
-  ngAfterViewInit() {
-    feather.replace();
-  }
+
   size: NzButtonSize = 'large';
 }

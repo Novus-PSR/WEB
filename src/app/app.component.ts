@@ -17,8 +17,6 @@ export class AppComponent implements OnInit {
   
   url = window.location.href.split("/").slice(-1)[0];
 
-  ngOnInit():void {
-
-  };
+  ngOnInit():void {};
 
 }

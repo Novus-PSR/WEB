@@ -23,7 +23,10 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzProgressModule } from 'ng-zorro-antd/progress';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 registerLocaleData(en);
 
@@ -42,6 +45,10 @@ registerLocaleData(en);
     ComponentsModule,
     NzLayoutModule,
     BrowserAnimationsModule,
+    NzGridModule,
+    NzProgressModule,
+    NzButtonModule,
+    NzDropDownModule,
     DecksModule,
     CompetenciesModule
   ],
