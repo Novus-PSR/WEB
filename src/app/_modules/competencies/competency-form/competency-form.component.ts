@@ -10,6 +10,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 })
 export class CompetencyFormComponent implements OnInit {
   validateForm!: FormGroup;
+  user = JSON.parse(document.cookie.split('user=')[1].split(';')[0]);
   @Output() actionEmitter = new EventEmitter<string>();
 
   constructor(
@@ -33,6 +34,8 @@ export class CompetencyFormComponent implements OnInit {
         this.validateForm.value.school_id = JSON.parse(schoolData).id;
       }
 
+      let school_member_id = this.user.school_members[0].id;
+      this.validateForm.value.created_by_id = school_member_id;
       this.api.postPipe('competencies',this.validateForm.value).subscribe((resp:any) => {
         this.msg.success("Competencia creada con éxito");
         this.actionEmitter.emit("list");

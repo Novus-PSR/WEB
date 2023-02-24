@@ -27,7 +27,6 @@ export class CompetencyViewComponent {
   ngOnInit(): void {
     this.api.getPipe('competencies/' + this.competency_id).subscribe((data: any) => {
       this.competency = data;
-      console.log(this.competency.courses[0].course_name);
     });
 
     this.validateForm = this.fb.group({
