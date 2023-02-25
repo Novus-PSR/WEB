@@ -9,18 +9,21 @@
             </textarea>
                     </div>
                     <div nz-col nzSpan="12">
-                        <div>
-                            <p class="form-item">Código: </p><input nz-input formControlName="course_code"
+                        <div style="display:flex">
+                            <p class="form-item">Código: </p>
+                            <input nz-input formControlName="course_code"
                                 [(ngModel)]="course.course_code" />
                         </div>
 
-                        <div>
-                            <p class="form-item">Semestre: </p><input nz-input formControlName="semester"
+                        <div style="display:flex">
+                            <p class="form-item">Semestre: </p>
+                            <input nz-input formControlName="semester"
                                 [(ngModel)]="course.semester" />
                         </div>
 
-                        <div>
-                            <p class="form-item">Tipo de UF: </p><input nz-input formControlName="course_type"
+                        <div style="display:flex">
+                            <p class="form-item">Tipo de UF: </p>
+                            <input nz-input formControlName="course_type"
                                 [(ngModel)]="course.course_type" />
                         </div>
                     </div>
@@ -30,8 +33,9 @@
         <div nz-row class="bottom-cards">
             <div nz-col nzSpan="12">
                 <div class="card left-card">
-                    <p class="h2">Cuestionarios</p>
-                    <p *ngIf="course.decks.length == 0"> No hay cuestionarios asociados a este curso</p>
+                    <div class="h2">Cuestionarios</div>
+                    <p class='text-cuestionarios' *ngIf="course.decks.length == 0"> No hay cuestionarios asociados a
+                        este curso</p>
                     <div *ngIf="course.decks.length != 0">
                         <div *ngFor="let deck of course.decks">
                             <a class="pill" [routerLink]="['/decks', deck.deck_id]">{{deck.deck_name}}</a>
@@ -42,9 +46,9 @@
 
             <div nz-col nzSpan="12">
                 <div class="card right-card">
-                    <p class="h2">Grupos</p>
+                    <div class="h2">Grupos</div>
                     <p *ngIf="course.groups.length == 0"> No hay grupos asociados a este curso</p>
-                    <div *ngIf="course.groups.length != 0">
+                    <div *ngIf="course.groups.length != 0" style="margin-top:10px">
                         <div *ngFor="let group of course.groups">
                             <a class="pill" [routerLink]="['/groups', group.group_id]">{{group.group_name}}</a>
                         </div>
@@ -52,15 +56,17 @@
                 </div>
             </div>
         </div>
-        <button nz-button nzType="dashed" [nzSize]="'large'" nzShape="round" nzDanger style="margin: 20px 0px 0px 0px;"
-            (click)="showDeleteConfirm()">
-            <span nz-icon nzType="delete"></span>
-            Borrar curso
-        </button>
+        <div nz-row>
+            <button nz-button nzType="dashed" [nzSize]="'large'" nzShape="round" nzDanger
+                style="margin: 20px 0px 0px 0px;" (click)="showDeleteConfirm()">
+                <span nz-icon nzType="delete"></span>
+                Borrar curso
+            </button>
+        </div>
     </div>
     <div nz-col nzSpan="6">
         <div class="card comp-card">
-            <p class="h2">Competencias</p>
+            <div class="h2">Competencias</div>
             <p *ngIf="course.competencies.length == 0"> No hay competencias asociadas a este curso</p>
             <div *ngIf="course.competencies.length != 0" class="competency">
                 <div nz-row *ngFor="let competency of course.competencies" style="margin: 16px 0px 16px 0px;">
