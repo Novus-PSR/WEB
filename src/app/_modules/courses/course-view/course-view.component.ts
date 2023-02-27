@@ -58,7 +58,10 @@ export class CourseViewComponent implements OnInit {
     }
     this.api.postPipe('course_competencies',body).subscribe((resp:any) => {
       this.msg.success("Competencia agregada al curso con éxito");
-      this.course.competencies.push(this.selectedCompetency);
+      // console.log(resp);
+      let newComp = resp;
+      newComp.competency = this.selectedCompetency;
+      this.course.course_competencies.push(newComp);
       this.selectedCompetency = null;
     });
     this.isVisible = false;
