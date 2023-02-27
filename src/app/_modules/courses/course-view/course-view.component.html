@@ -67,18 +67,20 @@
     <div nz-col nzSpan="6">
         <div class="card comp-card">
             <div class="h2">Competencias</div>
-            <p *ngIf="course.competencies.length == 0"> No hay competencias asociadas a este curso</p>
-            <div *ngIf="course.competencies.length != 0" class="competency">
-                <div nz-row *ngFor="let competency of course.competencies" style="margin: 16px 0px 16px 0px;">
+            <p *ngIf="course.course_competencies.length == 0"> No hay competencias asociadas a este curso</p>
+            <div *ngIf="course.course_competencies.length != 0" class="competency">
+                <div nz-row *ngFor="let competency of course.course_competencies; let i = index" style="margin: 16px 0px 16px 0px;">
                     <div nz-col nzSpan="3" style="background:#B76EDA; border-radius: 16px 0px 0px 16px;">
                     </div>
                     <div nz-col nzSpan="21" style="background: #EBEBEB; border-radius: 0px 16px 16px 0px;">
                         <p
                             style="font-family: 'Inter';font-weight: 600;font-size: 16px; padding: 12px 8px 0px; margin-bottom: 0px;">
-                            {{competency.name}}</p>
+                            {{competency.competency.name}}<span (click)="deleteCompetency(competency.id, i)" nz-icon nzType="close" nzTheme="outline"></span></p>
+                        
                         <p
                             style="font-family: 'Inter';font-weight: 400;font-size: 12px;color: #888888; padding: 0px 8px;">
-                            {{competency.competency_code}}</p>
+                            {{competency.competency.competency_code}}</p>
+                        
                     </div>
                 </div>
             </div>

@@ -27,6 +27,7 @@ export class CourseViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.api.getPipe('courses/' + this.course_id).subscribe((data: any) => {
+      console.log(data);
       this.course = data;
     });
 
@@ -46,6 +47,7 @@ export class CourseViewComponent implements OnInit {
   }
 
   showModal(): void {
+    this.filterCompetencies();
     this.isVisible = true;
   }
 
@@ -57,6 +59,7 @@ export class CourseViewComponent implements OnInit {
     this.api.postPipe('course_competencies',body).subscribe((resp:any) => {
       this.msg.success("Competencia agregada al curso con éxito");
       this.course.competencies.push(this.selectedCompetency);
+      this.selectedCompetency = null;
     });
     this.isVisible = false;
   }
@@ -94,8 +97,25 @@ export class CourseViewComponent implements OnInit {
     });
   }
 
-  onCompetencyChange(event: any) {
+  filterCompetencies() {
+    this.competencies = this.competencies.filter((competency: any) => {
+      return !this.course.course_competencies.find((courseCompetency: any) => {
+        return courseCompetency.competency.id == competency.id;
+      });
+    });
+  };
+
+  deleteCompetency(id : any, index : any) {
+    this.api.deletePipe('course_competencies/' + id).subscribe((resp:any) => {
+      this.msg.success("Competencia eliminada del curso con éxito");
+      this.course.course_competencies.splice(index,1);
+    }, (err:any) => {
+      this.msg.error("Error eliminando la competencia del curso, inténtelo de nuevo");
+    });
   }
+
+  onCompetencyChange(value: any) {
+  };
 
   submitForm() {
     if (this.validateForm.valid) {
