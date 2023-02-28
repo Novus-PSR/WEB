@@ -5,12 +5,12 @@
             <div nz-row>
                 <div nz-col nzSpan="12">
                     <textarea nz-input formControlName="description" [(ngModel)]="competency.description">
-            </textarea>
+                    </textarea>
                 </div>
                 <div nz-col nzSpan="12">
-                    <div>
-                        <p class="form-item">Código: </p><input nz-input formControlName="competency_code"
-                            [(ngModel)]="competency.competency_code" />
+                    <div style="display: flex">
+                        <p class="form-item">Código: </p>
+                        <input nz-input formControlName="competency_code" [(ngModel)]="competency.competency_code" />
                     </div>
                 </div>
             </div>
@@ -37,21 +37,18 @@
             </tbody>
         </nz-table>
     </div>
-    <div nz-row>
-        <div nz-col nzSpan="18">
+    <div nz-row style="display:flex; justify-content: space-between;">
+        <div>
             <button nz-button nzType="dashed" [nzSize]="'large'" nzShape="round" nzDanger
                 style="margin: 20px 0px 0px 0px;" (click)="showDeleteConfirm()">
                 <span nz-icon nzType="delete"></span>
                 Borrar competencia
             </button>
         </div>
-        <div nz-col nzSpan="6">
-            <div class="float-right">
-                <button nz-button nzType="default" [nzSize]="'large'" nzShape="round"
-                    (click)="cancel()">Cancelar</button>
-                <button nz-button nzType="primary" [nzSize]="'large'" nzShape="round" (click)="submitForm()"
-                    [disabled]="validateForm.untouched">Guardar cambios</button>
-            </div>
+        <div style="margin-top:auto; margin-bottom: auto">
+            <button nz-button nzType="default" [nzSize]="'large'" nzShape="round" (click)="cancel()">Cancelar</button>
+            <button nz-button nzType="primary" [nzSize]="'large'" nzShape="round" (click)="submitForm()"
+                [disabled]="validateForm.untouched">Guardar cambios</button>
         </div>
     </div>
 </div>

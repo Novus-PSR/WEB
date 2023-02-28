@@ -8,11 +8,59 @@
         </nz-header>
         <nz-layout class="inner-layout">
             <div class="header-row" *ngIf="action == 'list'">
-                <h1 class="header-row-element"> Competencias </h1>
-                <button nz-button nzType="primary" (click)="setAction('create')" [nzSize]="'large'" nzShape="round">
-                    <span nz-icon nzType="plus-circle"></span>
-                    Agregar
-                </button>
+                <div style="line-height: 44px"> Competencias </div>
+                <div style="display:flex; width: 30%; justify-content:space-between ">
+                    <button nzTrigger="click" nz-button nz-dropdown [nzDropdownMenu]="menusort" class="filter-btn"
+                        nzType="text" style="height: 48px">
+                        <i-feather name="align-center"></i-feather>
+                        Sort
+                    </button>
+                    <nz-dropdown-menu #menusort="nzDropdownMenu">
+                        <ul nz-menu style="border-radius: 8px">
+                            <li nz-menu-item style="border-radius: 16px;display:flex; justify-content: space-around;
+                font-size: 18px;
+                font-weight: 500;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18 15L12 9L6 15" stroke="black" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                Sort
+                            </li>
+                            <li nz-menu-divider></li>
+                            <li nz-menu-item class="dropdown-item">General</li>
+                            <li nz-menu-divider></li>
+                            <li nz-menu-item class="dropdown-item">Por Curso</li>
+                        </ul>
+                    </nz-dropdown-menu>
+                    <button nzTrigger="click" nz-button nz-dropdown [nzDropdownMenu]="menufilter" class="filter-btn"
+                        nzType="text" style="height: 48px">
+                        <i-feather name="filter"></i-feather>
+                        Filtrar
+                    </button>
+                    <nz-dropdown-menu #menufilter="nzDropdownMenu">
+                        <ul nz-menu style="border-radius: 8px">
+                            <li nz-menu-item style="border-radius: 16px;display:flex; justify-content: space-around;
+                font-size: 18px;
+                font-weight: 500;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18 15L12 9L6 15" stroke="black" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                                Filtrar
+                            </li>
+                            <li nz-menu-divider></li>
+                            <li nz-menu-item class="dropdown-item">General</li>
+                            <li nz-menu-divider></li>
+                            <li nz-menu-item class="dropdown-item">Por Curso</li>
+                        </ul>
+                    </nz-dropdown-menu>
+                    <button style="margin-top:auto;margin-bottom:auto;" nz-button nzType="primary" (click)="setAction('create')" [nzSize]="'large'" nzShape="round">
+                        <span nz-icon nzType="plus-circle"></span>
+                        Agregar
+                    </button>
+                </div>  
             </div>
             <nz-content>
                 <competency-list *ngIf="action == 'list'" (competencyEmitter)="openCompetency($event)"></competency-list>

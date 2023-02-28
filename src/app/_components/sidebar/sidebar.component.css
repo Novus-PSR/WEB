@@ -17,18 +17,25 @@
 
 .custom-button-hover:hover {
     background-color: #EBEBEB;
-    color:black
+    color: black
 }
 
 .ant-layout-header {
     margin: 16px 0px;
 }
 
-.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
     background-color: rgba(227, 196, 241, 1);
-    color:black;
+    color: black;
 }
 
-.ant-menu-inline .ant-menu-item::after, .ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after{
-    border-right:0px;
+.ant-menu-inline .ant-menu-item::after,
+.ant-menu-vertical .ant-menu-item::after,
+.ant-menu-vertical-left .ant-menu-item::after,
+.ant-menu-vertical-right .ant-menu-item::after {
+    border-right: 0px;
+}
+
+.active-button {
+    background-color: rgba(227, 196, 241, 1);
 }

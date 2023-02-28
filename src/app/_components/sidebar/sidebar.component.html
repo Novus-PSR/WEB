@@ -1,33 +1,33 @@
 <ul nz-menu nzMode="inline" class="sider-menu">
     <nz-header style="background: rgba(253, 253, 253, 1)">
     </nz-header>
-    <li class="li-sidebar" routerLink="/dashboard">
-        <button nz-tooltip nzTooltipTitle="Tablero general" nzTooltipPlacement="right" style="padding-left:15px; display:inline-flex;" nz-menu-item nz-button nzType="text" class="custom-button-hover btn">
+    <li class="li-sidebar">
+        <button routerLink="/dashboard" routerLinkActive="active-button" nz-tooltip nzTooltipTitle="Tablero general" nzTooltipPlacement="right" [nzTooltipMouseEnterDelay]="0.5" style="padding-left:15px; display:inline-flex;" nz-menu-item nz-button nzType="text" class="custom-button-hover btn">
             <i-feather name="home"></i-feather>
         </button>
     </li>
-    <li class="li-sidebar" routerLink="/courses">
-        <button nz-tooltip nzTooltipTitle="Cursos" nzTooltipPlacement="right" style="padding-left:15px; display:inline-flex" nz-menu-item nz-button nzType="text" class="custom-button-hover">
+    <li class="li-sidebar">
+        <button routerLink="/courses" routerLinkActive="active-button" nz-tooltip nzTooltipTitle="Cursos" nzTooltipPlacement="right" [nzTooltipMouseEnterDelay]="0.5" style="padding-left:15px; display:inline-flex" nz-menu-item nz-button nzType="text" class="custom-button-hover btn">
             <i-feather name="book-open"></i-feather>
         </button>
     </li>
     <li class="li-sidebar">
-        <button nz-tooltip nzTooltipTitle="Cuestionarios" nzTooltipPlacement="right" style="padding-left:15px; display:inline-flex" nz-menu-item nz-button nzType="text" class="custom-button-hover btn">
+        <button nz-tooltip nzTooltipTitle="Cuestionarios" nzTooltipPlacement="right" [nzTooltipMouseEnterDelay]="0.5" style="padding-left:15px; display:inline-flex" nz-menu-item nz-button nzType="text" class="custom-button-hover btn">
             <i-feather name="file-text"></i-feather>
         </button>
     </li>
     <li class="li-sidebar">
-        <button nz-tooltip nzTooltipTitle="Competencias" nzTooltipPlacement="right" style="padding-left:15px; display:inline-flex" nz-menu-item nz-button nzType="text" class="custom-button-hover btn">
+        <button routerLink="/competencies" routerLinkActive="active-button" nz-tooltip nzTooltipTitle="Competencias" nzTooltipPlacement="right" [nzTooltipMouseEnterDelay]="0.5" style="padding-left:15px; display:inline-flex" nz-menu-item nz-button nzType="text" class="custom-button-hover btn">
             <i-feather name="target"></i-feather>
         </button>
     </li>
     <li class="li-sidebar">
-        <button nz-tooltip nzTooltipTitle="Estudiantes" nzTooltipPlacement="right" style="padding-left:15px; display:inline-flex" nz-menu-item nz-button nzType="text" class="custom-button-hover btn">
+        <button nz-tooltip nzTooltipTitle="Estudiantes" nzTooltipPlacement="right" [nzTooltipMouseEnterDelay]="0.5" style="padding-left:15px; display:inline-flex" nz-menu-item nz-button nzType="text" class="custom-button-hover btn">
             <i-feather name="users"></i-feather>
         </button>
     </li>
     <li class="li-sidebar">
-        <button nz-tooltip nzTooltipTitle="Ajustes" nzTooltipPlacement="right" style="padding-left:15px; display:inline-flex"nz-menu-item nz-button nzType="text" class="custom-button-hover btn">
+        <button nz-tooltip nzTooltipTitle="Ajustes" nzTooltipPlacement="right" [nzTooltipMouseEnterDelay]="0.5" style="padding-left:15px; display:inline-flex"nz-menu-item nz-button nzType="text" class="custom-button-hover btn">
             <i-feather name="settings"></i-feather>
         </button>
     </li>
