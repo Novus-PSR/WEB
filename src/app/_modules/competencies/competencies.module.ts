@@ -15,6 +15,8 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { NzTableModule } from 'ng-zorro-antd/table';
     FormsModule,
     ReactiveFormsModule,
     NzInputModule,
-    NzTableModule
+    NzTableModule,
+    NzIconModule,
+    NzDropDownModule
   ],
   exports: [
     CompetenciesComponent,

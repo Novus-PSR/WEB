@@ -10,11 +10,11 @@
     background: #FDFDFD;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
     border-radius: 16px;
-    padding: 24px 0px 24px 24px;
+    padding: 24px 24px 24px 24px;
 }
 
 input {
-    width: 75%;
+    width: 100%;
     border-radius: 16px;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -27,10 +27,14 @@ input {
     font-weight: 600;
     font-size: 16px;
     line-height: 19px;
+    margin-top: auto;
+    margin-bottom:auto;
+    margin-right: 5px;
+    white-space: nowrap;
 }
 
 textarea {
-    width: 75%;
+    width: 90%;
     height: 100%;
     border-radius: 16px;
     margin-top: 5px;
@@ -38,7 +42,7 @@ textarea {
 }
 
 .bottom-cards {
-    margin-top: 5%;
+    margin-top: 24px;
 }
 
 .float-right {
