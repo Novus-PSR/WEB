@@ -5,17 +5,16 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
-  selector: 'competency-view',
-  templateUrl: './competency-view.component.html',
-  styleUrls: ['./competency-view.component.css']
+  selector: 'group-view',
+  templateUrl: './group-view.component.html',
+  styleUrls: ['./group-view.component.css']
 })
-export class CompetencyViewComponent implements OnInit {
+export class GroupViewComponent implements OnInit {
   validateForm!: FormGroup;
-  @Input() competency_id: any;
+  @Input() group_id: any;
   @Output() viewEmitter = new EventEmitter<string>();
-  competency : any;
+  group : any;
   isVisible = false;
-  selectedCompetency : any;
 
   constructor(
     private fb: FormBuilder,
@@ -25,19 +24,18 @@ export class CompetencyViewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.api.getPipe('competencies/' + this.competency_id).subscribe((data: any) => {
-      this.competency = data;
+    this.api.getPipe('groups/' + this.group_id).subscribe((data: any) => {
+      this.group = data;
     });
 
     this.validateForm = this.fb.group({
-      name: [null, [Validators.required]],
-      description: [null, [Validators.required]],
-      competency_code: [null, [Validators.required]],
+      group_name: [null, [Validators.required]],
+      group_code: [null, [Validators.required]],
     });
   }
 
   cancel() {
-    this.competency = null;
+    this.group = null;
     this.viewEmitter.emit('list');
   }
 
@@ -45,23 +43,23 @@ export class CompetencyViewComponent implements OnInit {
     this.isVisible = true;
   }
 
-  deleteCompetency() {
-    this.api.deletePipe('competencies/' + this.competency.id).subscribe((resp:any) => {
-      this.msg.success("Competencia eliminada con éxito");
+  deleteGroup() {
+    this.api.deletePipe('groups/' + this.group.id).subscribe((resp:any) => {
+      this.msg.success("Grupo eliminado con éxito");
       this.viewEmitter.emit("list");
     }, (err:any) => {
-      this.msg.error("Error eliminando la competencia, inténtelo de nuevo");
+      this.msg.error("Error eliminando el grupo, inténtelo de nuevo");
     });
   }
 
   showDeleteConfirm(): void {
     this.modal.confirm({
-      nzTitle: '¿Seguro que quieres borrar esta competencia?',
-      nzContent: '<b style="color: red;">Tendrás que crear la competencia otra vez si haces esto</b>',
+      nzTitle: '¿Seguro que quieres borrar este grupo?',
+      nzContent: '<b style="color: red;">Tendrás que crear el grupo otra vez si haces esto</b>',
       nzOkText: 'Sí',
       nzOkType: 'primary',
       nzOkDanger: true,
-      nzOnOk: () => this.deleteCompetency(),
+      nzOnOk: () => this.deleteGroup(),
       nzCancelText: 'No',
       nzOnCancel: () => console.log('Cancel')
     });
@@ -69,11 +67,11 @@ export class CompetencyViewComponent implements OnInit {
 
   submitForm() {
     if (this.validateForm.valid) {
-      this.api.putPipe('competencies/' + this.competency.id,this.validateForm.value).subscribe((resp:any) => {
-        this.msg.success("Competencia modificada con éxito");
+      this.api.putPipe('groups/' + this.group.id,this.validateForm.value).subscribe((resp:any) => {
+        this.msg.success("Grupo modificado con éxito");
         this.viewEmitter.emit("list");
       }, (err:any) => {
-        this.msg.error("Error modificando la competencia, inténtelo de nuevo");
+        this.msg.error("Error modificando el grupo, inténtelo de nuevo");
       });
     } else {
       Object.values(this.validateForm.controls).forEach(control => {

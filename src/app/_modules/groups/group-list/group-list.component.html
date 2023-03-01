@@ -1,0 +1,9 @@
+<div nz-row >
+    <div *ngFor="let group of groups" nz-col class="card" (click)="open(group)">
+            <p class="card-header">{{group.group_name}}</p>
+            <div class="card-content">
+                <p class="card-small">{{group.group_code}}</p>
+            </div>
+            <div class="card-footer"></div>
+    </div>
+</div>
