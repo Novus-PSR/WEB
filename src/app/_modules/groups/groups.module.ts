@@ -19,6 +19,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
     NzTableModule,
     NzIconModule,
     NzDropDownModule,
-    NzSelectModule
+    NzSelectModule,
+    NzPopconfirmModule
   ],
   exports: [
     GroupsComponent,

@@ -51,6 +51,10 @@ export class GroupViewComponent implements OnInit {
       this.msg.error("Error eliminando el grupo, inténtelo de nuevo");
     });
   }
+  
+  
+  cancelConfirm(): void {
+  }
 
   showDeleteConfirm(): void {
     this.modal.confirm({
@@ -65,6 +69,24 @@ export class GroupViewComponent implements OnInit {
     });
   }
 
+  deleteGroupMember(id : any) {
+    this.api.deletePipe('group_members/' + id).subscribe((resp:any) => {
+      this.group.group_members = this.group.group_members.filter((member:any) => member.id != id);
+      this.msg.success("Usuario eliminado del grupo con éxito");
+    }, (err:any) => {
+      this.msg.error("Error eliminando el usuario del grupo, inténtelo de nuevo");
+    });
+  }
+
+  deleteGroupDeck(id : any) {
+    this.api.deletePipe('group_decks/' + id).subscribe((resp:any) => {
+      this.group.group_decks = this.group.group_decks.filter((deck:any) => deck.id != id);
+      this.msg.success("Deck eliminado del grupo con éxito");
+    }, (err:any) => {
+      this.msg.error("Error eliminando el deck del grupo, inténtelo de nuevo");
+    });
+  }
+  
   submitForm() {
     if (this.validateForm.valid) {
       this.api.putPipe('groups/' + this.group.id,this.validateForm.value).subscribe((resp:any) => {
