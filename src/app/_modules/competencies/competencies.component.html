@@ -8,8 +8,8 @@
         </nz-header>
         <nz-layout class="inner-layout">
             <div class="header-row" *ngIf="action == 'list'">
-                <div style="line-height: 44px"> Competencias </div>
-                <div style="display:flex; width: 30%; justify-content:space-between ">
+                <div style="line-height: 44px; font-weight: 700;"> Competencias </div>
+                <!-- <div style="display:flex; width: 30%; justify-content:space-between ">
                     <button nzTrigger="click" nz-button nz-dropdown [nzDropdownMenu]="menusort" class="filter-btn"
                         nzType="text" style="height: 48px">
                         <i-feather name="align-center"></i-feather>
@@ -60,7 +60,11 @@
                         <span nz-icon nzType="plus-circle"></span>
                         Agregar
                     </button>
-                </div>  
+                </div>   -->
+                <button style="margin-top:auto;margin-bottom:auto;" nz-button nzType="primary" (click)="setAction('create')" [nzSize]="'large'" nzShape="round">
+                    <span nz-icon nzType="plus-circle"></span>
+                    Agregar
+                </button>
             </div>
             <nz-content>
                 <competency-list *ngIf="action == 'list'" (competencyEmitter)="openCompetency($event)"></competency-list>

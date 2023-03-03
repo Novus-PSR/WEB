@@ -31,11 +31,9 @@ export class LoginComponent implements OnInit {
 
     this.api.loginPipe(json).subscribe((tokenData:any) => {
       document.cookie = "token=" + tokenData.token + "; expires=" + tokenData.exp;
-      this.api.getPipe('users/' + tokenData.user_id).subscribe((userData:any) => {
-        document.cookie = "user=" + JSON.stringify(userData), + "; expires=" + tokenData.exp;
-        this.loading = false;
-        this.router.navigateByUrl('/dashboard');
-      });
+      this.getUserData(tokenData);
+      this.loading = false;
+      this.router.navigateByUrl('/dashboard');
     });
   }
 
@@ -43,4 +41,16 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('/signup');
   }
 
+  getUserData(tokenData : any) {
+    this.api.getPipe('users/' + tokenData.user_id).subscribe((userData:any) => {
+      document.cookie = "user=" + JSON.stringify(userData), + "; expires=" + tokenData.exp;
+      this.getSchoolData(userData);
+    });
+  }
+
+  getSchoolData(user : any) {
+    this.api.getPipe('schools/' + user.schools[0].id).subscribe((schoolData:any) => {
+      localStorage.setItem('school', JSON.stringify(schoolData));
+    });
+  }
 }
