@@ -9,7 +9,8 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 })
 
 export class NavbarComponent implements OnInit {
-  user = JSON.parse(document.cookie.split('user=')[1].split(';')[0]);
+  // user = JSON.parse(document.cookie.split('user=')[1].split(';')[0]);
+  user = JSON.parse(localStorage.getItem('user')!);
   schoolData : any;
   
   constructor(

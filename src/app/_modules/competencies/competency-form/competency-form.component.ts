@@ -10,7 +10,8 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 })
 export class CompetencyFormComponent implements OnInit {
   validateForm!: FormGroup;
-  user = JSON.parse(document.cookie.split('user=')[1].split(';')[0]);
+  // user = JSON.parse(document.cookie.split('user=')[1].split(';')[0]);
+  user = JSON.parse(localStorage.getItem('user')!);
   @Output() actionEmitter = new EventEmitter<string>();
 
   constructor(

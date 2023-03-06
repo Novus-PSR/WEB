@@ -10,13 +10,13 @@ import { ApiService } from 'src/app/_services/api.service';
 
 export class LoginComponent implements OnInit {
 
-  email : string = "";
-  password : string = "";
-  loading :  boolean = false;
+  email: string = "";
+  password: string = "";
+  loading: boolean = false;
 
   constructor(
-    private api : ApiService,
-    private router : Router
+    private api: ApiService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -29,9 +29,22 @@ export class LoginComponent implements OnInit {
       "password": this.password
     };
 
-    this.api.loginPipe(json).subscribe((tokenData:any) => {
+    this.api.loginPipe(json).subscribe((tokenData: any) => {
       document.cookie = "token=" + tokenData.token + "; expires=" + tokenData.exp;
       this.getUserData(tokenData);
+    });
+  }
+
+  getUserData(tokenData: any) {
+    this.api.getPipe('users/' + tokenData.user_id).subscribe((userData: any) => {
+      localStorage.setItem('user', JSON.stringify(userData));
+      this.getSchoolData(userData);
+    });
+  }
+
+  getSchoolData(userData : any) {
+    this.api.getPipe('schools/' + userData.schools[0].id).subscribe((schoolData: any) => {
+      localStorage.setItem('school', JSON.stringify(schoolData));
       this.loading = false;
       this.router.navigateByUrl('/dashboard');
     });
@@ -39,18 +52,5 @@ export class LoginComponent implements OnInit {
 
   goToSignUp() {
     this.router.navigateByUrl('/signup');
-  }
-
-  getUserData(tokenData : any) {
-    this.api.getPipe('users/' + tokenData.user_id).subscribe((userData:any) => {
-      document.cookie = "user=" + JSON.stringify(userData), + "; expires=" + tokenData.exp;
-      this.getSchoolData(userData);
-    });
-  }
-
-  getSchoolData(user : any) {
-    this.api.getPipe('schools/' + user.schools[0].id).subscribe((schoolData:any) => {
-      localStorage.setItem('school', JSON.stringify(schoolData));
-    });
   }
 }

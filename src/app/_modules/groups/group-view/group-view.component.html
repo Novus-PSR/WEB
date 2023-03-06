@@ -1,4 +1,5 @@
-<div class="container">
+<loading *ngIf="!group"></loading>
+<div *ngIf="group" class="container">
     <form nz-form [formGroup]="validateForm">
         <div class="card top-card">
             <input nz-input formControlName="group_name" [(ngModel)]="group.group_name" class="h1" />
@@ -9,14 +10,21 @@
         </div>
     </form>
     <div class="bottom-cards card">
-        <p class="h2">Miembros del grupo</p>
+        <div style="display: flex; justify-content: space-between;">
+            <p class="h2" style="display:inline-block">Miembros del grupo</p>
+            <button nz-button nzType="primary" [nzSize]="'large'" nzShape="round" (click)="showModal()"
+                style="margin: 0px 0px 20px 0px;">
+                <span nz-icon nzType="plus"></span>
+                Añadir miembro
+            </button>
+        </div>
         <nz-table #memberTable [nzData]="group.group_members" style="margin-right: 24px;" [nzPageSize]="5">
             <thead>
                 <tr>
                     <th>Nombre</th>
                     <th>Username</th>
                     <th>Email</th>
-                    <th>Gestión</th>
+                    <th>Borrar</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,11 +32,10 @@
                     <td>{{ data.user.first_name }} {{data.user.last_name}}</td>
                     <td>{{ data.user.username }}</td>
                     <td>{{ data.user.email }}</td>
-                    <td><a nz-popconfirm
-                        nzPopconfirmTitle="¿Seguro que quieres eliminar este usuario?"
-                        nzPopconfirmPlacement="bottom"
-                        (nzOnConfirm)="deleteGroupMember(data.id)"
-                        (nzOnCancel)="cancelConfirm()"><span nz-icon nzType="delete" nzTheme="outline"></span></a></td>
+                    <td><a nz-popconfirm nzPopconfirmTitle="¿Seguro que quieres eliminar este usuario?"
+                            nzPopconfirmPlacement="bottom" (nzOnConfirm)="deleteGroupMember(data.id)"
+                            (nzOnCancel)="cancelConfirm()"><span nz-icon nzType="delete" nzTheme="outline"></span></a>
+                    </td>
                 </tr>
             </tbody>
         </nz-table>
@@ -40,18 +47,17 @@
                 <tr>
                     <th>Nombre</th>
                     <th>Público?</th>
-                    <th>Gestión</th>
+                    <th>Borrar</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let data of deckTable.data">
                     <td>{{ data.deck.deck_name }}</td>
                     <td>{{ data.deck.public }}</td>
-                    <td><a nz-popconfirm
-                        nzPopconfirmTitle="¿Seguro que quieres eliminar este cuestionario?"
-                        nzPopconfirmPlacement="bottom"
-                        (nzOnConfirm)="deleteGroupDeck(data.id)"
-                        (nzOnCancel)="cancelConfirm()"><span nz-icon nzType="delete" nzTheme="outline"></span></a></td>
+                    <td><a nz-popconfirm nzPopconfirmTitle="¿Seguro que quieres eliminar este cuestionario?"
+                            nzPopconfirmPlacement="bottom" (nzOnConfirm)="deleteGroupDeck(data.id)"
+                            (nzOnCancel)="cancelConfirm()"><span nz-icon nzType="delete" nzTheme="outline"></span></a>
+                    </td>
                 </tr>
             </tbody>
         </nz-table>
@@ -70,4 +76,11 @@
                 [disabled]="validateForm.untouched">Guardar cambios</button>
         </div>
     </div>
+    <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="closeModal()" (nzOnOk)="addMember()">
+        <ng-container *nzModalContent>
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a person" [(ngModel)]="selectedUser">
+                <nz-option *ngFor="let user of users" [nzLabel]="user.first_name + ' ' +user.last_name" [nzValue]="user.id"></nz-option>
+            </nz-select>
+        </ng-container>
+    </nz-modal>
 </div>

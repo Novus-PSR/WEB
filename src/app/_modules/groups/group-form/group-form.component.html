@@ -18,7 +18,7 @@
         </nz-form-item>
         <nz-form-item>
             <nz-form-control nzErrorTip="Agregue un curso al que se relaciona este grupo">
-                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a person" formControlName="course_id">
+                <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Elige un curso" formControlName="course_id">
                     <nz-option *ngFor="let course of courses" nzLabel="{{course.course_name}}" nzValue="{{course.id}}"></nz-option>
                   </nz-select>
             </nz-form-control>
