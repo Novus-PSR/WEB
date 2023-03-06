@@ -79,7 +79,7 @@
     <nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="closeModal()" (nzOnOk)="addMember()">
         <ng-container *nzModalContent>
             <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a person" [(ngModel)]="selectedUser">
-                <nz-option *ngFor="let user of users" [nzLabel]="user.first_name + ' ' +user.last_name" [nzValue]="user.id"></nz-option>
+                <nz-option *ngFor="let user of users" [nzLabel]="user.user.first_name + ' ' +user.user.last_name" [nzValue]="user.id"></nz-option>
             </nz-select>
         </ng-container>
     </nz-modal>

@@ -114,11 +114,11 @@ export class GroupViewComponent implements OnInit {
   }
 
   addMember() {
-    console.log("add member");
+    console.log(this.selectedUser);
   }
 
   getUsers() {
-    this.api.getPipe('users').subscribe((data: any) => {
+    this.api.getPipe('school_members').subscribe((data: any) => {
       this.users = data;
     });
   }
@@ -126,7 +126,7 @@ export class GroupViewComponent implements OnInit {
   filterUsers() {
     this.users = this.users.filter((user: any) => {
       return !this.group.group_members.find((group_member: any) => {
-        return group_member.user.id == user.id;
+        return group_member.user.id == user.user.id;
       });
     });
   }
