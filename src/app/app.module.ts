@@ -13,6 +13,8 @@ import { CoursesModule } from './_modules/courses/courses.module';
 import { ComponentsModule } from './_components/components.module';
 import { DecksModule } from './_modules/decks/decks.module';
 import { CompetenciesModule } from './_modules/competencies/competencies.module';
+import { GroupsModule } from './_modules/groups/groups.module';
+
 // Services
 import { AuthInterceptor } from './_services/auth.interceptor';
 
@@ -50,7 +52,8 @@ registerLocaleData(en);
     NzButtonModule,
     NzDropDownModule,
     DecksModule,
-    CompetenciesModule
+    CompetenciesModule,
+    GroupsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

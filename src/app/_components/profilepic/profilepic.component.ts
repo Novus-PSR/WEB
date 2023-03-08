@@ -7,7 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProfilepicComponent implements OnInit {
 
-  user = JSON.parse(document.cookie.split('user=')[1].split(';')[0]);
+  // user = JSON.parse(document.cookie.split('user=')[1].split(';')[0]);
+  user = JSON.parse(localStorage.getItem('user')!);
   //@Input() public photoUrl: string = "";
   //@Input() public name: string = "";
 

@@ -9,8 +9,8 @@ import { ApiService } from 'src/app/_services/api.service';
 
 export class DashboardComponent implements OnInit {
   
-  user = JSON.parse(document.cookie.split('user=')[1].split(';')[0]);
-
+  // user = JSON.parse(document.cookie.split('user=')[1].split(';')[0]);
+  user = JSON.parse(localStorage.getItem('user')!);
   formatTwo = (): string => `100%`;
 
   private colors = [

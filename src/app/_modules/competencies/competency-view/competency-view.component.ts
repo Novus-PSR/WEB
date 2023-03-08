@@ -9,7 +9,7 @@ import { NzModalService } from 'ng-zorro-antd/modal';
   templateUrl: './competency-view.component.html',
   styleUrls: ['./competency-view.component.css']
 })
-export class CompetencyViewComponent {
+export class CompetencyViewComponent implements OnInit {
   validateForm!: FormGroup;
   @Input() competency_id: any;
   @Output() viewEmitter = new EventEmitter<string>();
@@ -34,7 +34,6 @@ export class CompetencyViewComponent {
       description: [null, [Validators.required]],
       competency_code: [null, [Validators.required]],
     });
-    // this.getCompetencies();
   }
 
   cancel() {
@@ -45,23 +44,6 @@ export class CompetencyViewComponent {
   showModal(): void {
     this.isVisible = true;
   }
-
-  // handleOk(): void {
-  //   let body = {
-  //     course_id: this.course.id,
-  //     competency_id: this.selectedCompetency.id
-  //   }
-  //   this.api.postPipe('course_competencies',body).subscribe((resp:any) => {
-  //     this.msg.success("Competencia agregada al curso con éxito");
-  //     this.course.competencies.push(this.selectedCompetency);
-  //   });
-  //   this.isVisible = false;
-  // }
-
-  // handleCancel(): void {
-  //   console.log('Button cancel clicked!');
-  //   this.isVisible = false;
-  // }
 
   deleteCompetency() {
     this.api.deletePipe('competencies/' + this.competency.id).subscribe((resp:any) => {
@@ -84,15 +66,6 @@ export class CompetencyViewComponent {
       nzOnCancel: () => console.log('Cancel')
     });
   }
-
-  // getCompetencies() {
-  //   this.api.getPipe('competencies').subscribe((data: any) => {
-  //     this.competencies = data;
-  //   });
-  // }
-
-  // onCompetencyChange(event: any) {
-  // }
 
   submitForm() {
     if (this.validateForm.valid) {

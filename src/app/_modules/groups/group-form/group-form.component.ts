@@ -4,15 +4,16 @@ import { ApiService } from 'src/app/_services/api.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
-  selector: 'competency-form',
-  templateUrl: './competency-form.component.html',
-  styleUrls: ['./competency-form.component.css']
+  selector: 'group-form',
+  templateUrl: './group-form.component.html',
+  styleUrls: ['./group-form.component.css']
 })
-export class CompetencyFormComponent implements OnInit {
+export class GroupFormComponent {
   validateForm!: FormGroup;
   // user = JSON.parse(document.cookie.split('user=')[1].split(';')[0]);
   user = JSON.parse(localStorage.getItem('user')!);
   @Output() actionEmitter = new EventEmitter<string>();
+  courses : any;
 
   constructor(
     private fb: FormBuilder,
@@ -21,27 +22,21 @@ export class CompetencyFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getCourses();
     this.validateForm = this.fb.group({
-      name: [null, [Validators.required]],
-      description: [null, [Validators.required]],
-      competency_code: [null, [Validators.required]],
+      group_name: [null, [Validators.required]],
+      group_code: [null, [Validators.required]],
+      course_id: [null, [Validators.required]]
     });
   }
 
   submitForm(): void {
     if (this.validateForm.valid) {
-      let schoolData = localStorage.getItem('school');
-      if (schoolData) {
-        this.validateForm.value.school_id = JSON.parse(schoolData).id;
-      }
-
-      let school_member_id = this.user.school_members[0].id;
-      this.validateForm.value.created_by_id = school_member_id;
-      this.api.postPipe('competencies',this.validateForm.value).subscribe((resp:any) => {
-        this.msg.success("Competencia creada con éxito");
+      this.api.postPipe('groups',this.validateForm.value).subscribe((resp:any) => {
+        this.msg.success("Grupo creado con éxito");
         this.actionEmitter.emit("list");
       }, (err:any) => {
-        this.msg.error("Error creando la competencia, inténtelo de nuevo");
+        this.msg.error("Error creando el grupo, inténtelo de nuevo");
       });
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
@@ -55,5 +50,11 @@ export class CompetencyFormComponent implements OnInit {
   
   cancel() {
     this.actionEmitter.emit("list");
+  }
+
+  getCourses() {
+    return this.api.getPipe('courses').subscribe((resp:any) => {
+      this.courses = resp;
+    });
   }
 }

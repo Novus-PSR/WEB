@@ -1,0 +1,100 @@
+<loading *ngIf="!group"></loading>
+<div *ngIf="group" class="container">
+    <form nz-form [formGroup]="validateForm">
+        <div class="card top-card">
+            <input nz-input formControlName="group_name" [(ngModel)]="group.group_name" class="h1" />
+            <div style="display: flex">
+                <p class="form-item">Código: </p>
+                <input nz-input formControlName="group_code" [(ngModel)]="group.group_code" />
+            </div>
+        </div>
+    </form>
+    <div class="bottom-cards card">
+        <div style="display: flex; justify-content: space-between;">
+            <p class="h2" style="display:inline-block">Miembros del grupo</p>
+            <button nz-button nzType="primary" [nzSize]="'large'" nzShape="round" (click)="showMemberModal()"
+                style="margin: 0px 0px 20px 0px;">
+                <span nz-icon nzType="plus"></span>
+                Añadir miembro
+            </button>
+        </div>
+        <nz-table #memberTable [nzData]="group.group_members" style="margin-right: 24px;" [nzPageSize]="5">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Borrar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of memberTable.data">
+                    <td>{{ data.user.first_name }} {{data.user.last_name}}</td>
+                    <td>{{ data.user.username }}</td>
+                    <td>{{ data.user.email }}</td>
+                    <td><a nz-popconfirm nzPopconfirmTitle="¿Seguro que quieres eliminar este usuario?"
+                            nzPopconfirmPlacement="bottom" (nzOnConfirm)="deleteGroupMember(data.id)"
+                            (nzOnCancel)="cancelConfirm()"><span nz-icon nzType="delete" nzTheme="outline"></span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+    <div class="bottom-cards card">
+        <div style="display: flex; justify-content: space-between;">
+            <p class="h2" style="display:inline-block">Cuestionarios</p>
+            <button nz-button nzType="primary" [nzSize]="'large'" nzShape="round" (click)="showDeckModal()"
+                style="margin: 0px 0px 20px 0px;">
+                <span nz-icon nzType="plus"></span>
+                Añadir cuestionario
+            </button>
+        </div>
+        <nz-table #deckTable [nzData]="group.group_decks" style="margin-right: 24px;" [nzPageSize]="5">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Visibilidad</th>
+                    <th>Borrar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of deckTable.data">
+                    <td>{{ data.deck.deck_name }}</td>
+                    <td>{{ data.deck.public ? 'Público' : 'Privado'}}</td>
+                    <td><a nz-popconfirm nzPopconfirmTitle="¿Seguro que quieres eliminar este cuestionario?"
+                            nzPopconfirmPlacement="bottom" (nzOnConfirm)="deleteGroupDeck(data.id)"
+                            (nzOnCancel)="cancelConfirm()"><span nz-icon nzType="delete" nzTheme="outline"></span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+    </div>
+    <div nz-row style="display:flex; justify-content: space-between;">
+        <div>
+            <button nz-button nzType="dashed" [nzSize]="'large'" nzShape="round" nzDanger
+                style="margin: 20px 0px 0px 0px;" (click)="showDeleteConfirm()">
+                <span nz-icon nzType="delete"></span>
+                Borrar grupo
+            </button>
+        </div>
+        <div style="margin-top:auto; margin-bottom: auto">
+            <button nz-button nzType="default" [nzSize]="'large'" nzShape="round" (click)="cancel()">Salir</button>
+            <button nz-button nzType="primary" [nzSize]="'large'" nzShape="round" (click)="submitForm()"
+                [disabled]="validateForm.untouched">Guardar cambios</button>
+        </div>
+    </div>
+    <nz-modal [(nzVisible)]="memberVisible" nzTitle="Agregar miembro" (nzOnCancel)="closeMemberModal()" (nzOnOk)="addMember()">
+        <ng-container *nzModalContent>
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Seleccione un usuario" [(ngModel)]="selectedUser">
+                <nz-option *ngFor="let user of users" [nzLabel]="user.user.first_name + ' ' +user.user.last_name" [nzValue]="user"></nz-option>
+            </nz-select>
+        </ng-container>
+    </nz-modal>
+    <nz-modal [(nzVisible)]="deckVisible" nzTitle="Agregar cuestionario" (nzOnCancel)="closeDeckModal()" (nzOnOk)="addDeck()">
+        <ng-container *nzModalContent>
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Seleccione un cuestionario" [(ngModel)]="selectedDeck">
+                <nz-option *ngFor="let deck of decks" [nzLabel]="deck.deck_name" [nzValue]="deck"></nz-option>
+            </nz-select>
+        </ng-container>
+    </nz-modal>
+</div>

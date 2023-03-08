@@ -2,6 +2,7 @@ nz-layout {
     height: 100%;
 }
 
+
 .inner-layout {
     padding: 133px 56px 24px;
     background-color: rgba(235, 235, 235, 1);
@@ -13,13 +14,14 @@ nz-layout {
 .header-row {
     display: flex;
     justify-content: space-between;
-
 }
 
 nz-content {
     background: #EBEBEB;
     min-height: 280px;
     border-radius: 16px;
+    overflow: auto;
+    padding: 12px;
 }
 
 nz-header {
@@ -68,7 +70,7 @@ nz-sider {
     box-shadow: none;
 }
 
-.dropdown-item{
+.dropdown-item {
     border-radius: 16px;
     justify-content: center;
     font-family: 'Inter';

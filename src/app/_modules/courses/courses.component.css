@@ -2,33 +2,22 @@ nz-layout {
     height: 100%;
 }
 
-/* .inner-layout {
-    padding: 133px 56px 24px;
-    background-color: #ebebeb;
-} */
-
 .inner-layout {
     padding: 133px 56px 24px;
     background-color: rgba(235, 235, 235, 1);
-    font-weight: 700;
     font-size: 36px;
     font-family: 'Inter';
     font-style: normal;
 }
 
 .header-row {
-    /* margin: 45 0 0 70;  */
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
-    
 }
 
 nz-content {
     background: #EBEBEB;
-    /* padding: 24px; */
     min-height: 280px;
-    /* margin-top: 23px; */
     border-radius: 16px;
 }
 nz-header {

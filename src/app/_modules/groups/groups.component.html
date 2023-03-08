@@ -8,16 +8,16 @@
         </nz-header>
         <nz-layout class="inner-layout">
             <div class="header-row" *ngIf="action == 'list'">
-                <div style="line-height: 44px; font-weight: 700;"> Cursos </div>
+                <div style="line-height: 44px; font-weight: 700;"> Grupos </div>
                 <button style="margin-top:auto;margin-bottom:auto;" nz-button nzType="primary" (click)="setAction('create')" [nzSize]="'large'" nzShape="round">
                     <span nz-icon nzType="plus-circle"></span>
                     Agregar
                 </button>
             </div>
-            <nz-content>
-                <course-list *ngIf="action == 'list'" (courseEmitter)="openCourse($event)"></course-list>
-                <course-form *ngIf="action == 'create' " (actionEmitter)="setAction($event)"></course-form>
-                <course-view *ngIf="action == 'view' || action == 'edit'" [course_id]="course_id" (viewEmitter)="setAction($event)"></course-view>
+            <nz-content style="height: 100%;">
+                <group-list *ngIf="action == 'list'" (groupEmitter)="openGroup($event)"></group-list>
+                <group-form *ngIf="action == 'create'" (actionEmitter)="setAction($event)"></group-form>
+                <group-view *ngIf="action == 'view' || action == 'edit'" [group_id]="group_id" (viewEmitter)="setAction($event)"></group-view>
             </nz-content>
         </nz-layout>
     </nz-layout>

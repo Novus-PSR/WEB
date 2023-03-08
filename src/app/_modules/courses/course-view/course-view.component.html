@@ -44,11 +44,24 @@
             <div nz-col nzSpan="12">
                 <div class="card right-card">
                     <div class="h2">Grupos</div>
-                    <p *ngIf="course.groups.length == 0"> No hay grupos asociados a este curso</p>
+                    <p *ngIf="course.groups.length == 0" class='text-cuestionarios'> No hay grupos asociados a este curso</p>
                     <div *ngIf="course.groups.length != 0" style="margin-top:10px">
-                        <div *ngFor="let group of course.groups">
-                            <a class="pill" [routerLink]="['/groups', group.group_id]">{{group.group_name}}</a>
-                        </div>
+                        <nz-table #basicTable [nzData]="course.groups" style="margin-right: 24px;">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Nombre</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of basicTable.data">
+                                    <td>{{ data.group_code }}</td>
+                                    <td>{{ data.group_name }}</td>
+                                    <!-- <td>{{ data.course_type }}</td> -->
+                                    <!-- <td>{{ data.semester }}</td> -->
+                                </tr>
+                            </tbody>
+                        </nz-table>
                     </div>
                 </div>
             </div>
@@ -64,7 +77,7 @@
     <div nz-col nzSpan="6">
         <div class="card comp-card">
             <div class="h2">Competencias</div>
-            <p *ngIf="course.course_competencies.length == 0"> No hay competencias asociadas a este curso</p>
+            <p *ngIf="course.course_competencies.length == 0" class='text-cuestionarios'> No hay competencias asociadas a este curso</p>
             <div *ngIf="course.course_competencies.length != 0" class="competency">
                 <div nz-row *ngFor="let competency of course.course_competencies; let i = index"
                     style="margin: 16px 0px 16px 0px;">
@@ -90,7 +103,7 @@
             </button>
         </div>
         <div class="float-right">
-            <button nz-button nzType="default" [nzSize]="'large'" nzShape="round" (click)="cancel()">Cancelar</button>
+            <button nz-button nzType="default" [nzSize]="'large'" nzShape="round" (click)="cancel()">Salir</button>
             <button nz-button nzType="primary" [nzSize]="'large'" nzShape="round" (click)="submitForm()"
                 [disabled]="validateForm.untouched">Guardar cambios</button>
         </div>

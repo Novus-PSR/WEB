@@ -22,6 +22,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { Router, RouterModule } from '@angular/router';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
     NzInputModule,
     NzModalModule,
     RouterModule,
-    NzTabsModule
+    NzTabsModule,
+    NzTableModule
   ],
   exports: [
     CoursesComponent,

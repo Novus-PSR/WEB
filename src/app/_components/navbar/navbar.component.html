@@ -1,4 +1,4 @@
-<div class="logo" style="background-image: url({{schoolData.logo_url}}); background-size:cover; margin-left:32px"></div>
+<div *ngIf="schoolData" class="logo" style="background-image: url({{schoolData.logo_url}}); background-size:cover; margin-left:32px"></div>
 <ul nz-menu nzMode="horizontal" class="header-menu">
     <li class="menu-item" style="margin-right: 40px;
     margin-left: 112px; width: 100%">
