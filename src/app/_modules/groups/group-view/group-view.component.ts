@@ -14,9 +14,12 @@ export class GroupViewComponent implements OnInit {
   @Input() group_id: any;
   @Output() viewEmitter = new EventEmitter<string>();
   group: any;
-  isVisible = false;
+  memberVisible = false;
+  deckVisible = false;
   users: any;
+  decks: any;
   selectedUser: any;
+  selectedDeck: any;
 
   constructor(
     private fb: FormBuilder,
@@ -35,6 +38,7 @@ export class GroupViewComponent implements OnInit {
       group_code: [null, [Validators.required]],
     });
     this.getUsers();
+    this.getDecks();
   }
 
   cancel() {
@@ -80,9 +84,9 @@ export class GroupViewComponent implements OnInit {
   deleteGroupDeck(id: any) {
     this.api.deletePipe('group_decks/' + id).subscribe((resp: any) => {
       this.group.group_decks = this.group.group_decks.filter((deck: any) => deck.id != id);
-      this.msg.success("Deck eliminado del grupo con éxito");
+      this.msg.success("Cuestionario eliminado del grupo con éxito");
     }, (err: any) => {
-      this.msg.error("Error eliminando el deck del grupo, inténtelo de nuevo");
+      this.msg.error("Error eliminando el cuestionario del grupo, inténtelo de nuevo");
     });
   }
 
@@ -104,17 +108,54 @@ export class GroupViewComponent implements OnInit {
     }
   }
 
-  showModal() {
+  showMemberModal() {
     this.filterUsers();
-    this.isVisible = true;
+    this.memberVisible = true;
+  }
+  
+  showDeckModal() {
+    this.filterDecks();
+    this.deckVisible = true;
   }
 
-  closeModal() {
-    this.isVisible = false;
+  closeMemberModal() {
+    this.memberVisible = false;
+  }
+
+  closeDeckModal() {
+    this.deckVisible = false;
   }
 
   addMember() {
-    console.log(this.selectedUser);
+    let json = {
+      group_id: this.group.id,
+      school_member_id: this.selectedUser.id
+    }
+
+    this.api.postPipe('group_members', json).subscribe((resp: any) => {
+      this.msg.success("Usuario añadido al grupo con éxito"); 
+      let newGM = resp;
+      newGM.user = this.selectedUser.user;
+      this.group.group_members.push(newGM);
+      this.selectedUser = null;
+      this.closeMemberModal();
+    });
+  }
+
+  addDeck() {
+    let json = {
+      group_id: this.group.id,
+      deck_id: this.selectedDeck.id
+    }
+
+    this.api.postPipe('group_decks', json).subscribe((resp: any) => {
+      this.msg.success("Cuestionario añadido al grupo con éxito"); 
+      let newGD = resp;
+      newGD.deck = this.selectedUser;
+      this.group.group_decks.push(newGD);
+      this.selectedDeck = null;
+      this.closeDeckModal();
+    });
   }
 
   getUsers() {
@@ -123,10 +164,24 @@ export class GroupViewComponent implements OnInit {
     });
   }
 
+  getDecks() {
+    this.api.getPipe('decks').subscribe((data: any) => {
+      this.decks = data;
+    });
+  }
+
   filterUsers() {
     this.users = this.users.filter((user: any) => {
       return !this.group.group_members.find((group_member: any) => {
         return group_member.user.id == user.user.id;
+      });
+    });
+  }
+
+  filterDecks() {
+    this.decks = this.decks.filter((deck: any) => {
+      return !this.group.group_decks.find((group_deck: any) => {
+        return group_deck.deck.id == deck.id;
       });
     });
   }
